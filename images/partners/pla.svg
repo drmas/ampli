@@ -1,0 +1,5 @@
+<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Product Led Alliance Logo -->
+  <circle cx="30" cy="30" r="25" fill="none" stroke="#FF6B35" stroke-width="4"/>
+  <text x="65" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#FF6B35">Product Led</text>
+</svg>

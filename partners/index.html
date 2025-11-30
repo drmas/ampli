@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner With Ampli — Sponsorship & Collaboration</title>
+    <meta name="description" content="Reach engaged tech professionals through targeted sponsorship. Partner with Ampli to amplify your brand to Berlin's tech scene and the global AI builder community.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 C50 10, 50 50, 50 50 L10 50 C10 50, 10 30, 30 15 C40 8, 50 10, 50 10' fill='%23f5b84c'/%3E%3Cpath d='M50 10 C50 10, 60 8, 70 15 C90 30, 90 50, 90 50 L50 50 L50 10' fill='%231a8a5c'/%3E%3Cpath d='M10 50 L50 50 L50 90 C30 90, 10 70, 10 50' fill='%23f5f5f0'/%3E%3Cpath d='M50 50 L90 50 C90 70, 70 90, 50 90 L50 50' fill='%231a1a1a'/%3E%3C/svg%3E">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Partner With Ampli — Sponsorship & Collaboration">
+    <meta property="og:description" content="Reach engaged tech professionals through targeted sponsorship opportunities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ampli.xyz/partners">
+
+    <style>
+        .partner-hero {
+            min-height: 70vh;
+            padding-top: calc(var(--header-height) + var(--space-4xl));
+            padding-bottom: var(--space-4xl);
+        }
+
+        .stats-grid {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-3xl);
+        }
+
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .stat-card-value {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-card-value.gradient {
+            background: linear-gradient(135deg, var(--brand-yellow), var(--brand-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-card-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .options-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .options-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .option-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option-card-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, var(--brand-yellow), var(--brand-green));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .option-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .option-card p {
+            font-size: 0.95rem;
+            flex: 1;
+            margin-bottom: var(--space-lg);
+        }
+
+        .option-card ul {
+            margin-bottom: var(--space-lg);
+        }
+
+        .option-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: var(--space-xs) 0;
+        }
+
+        .option-card li svg {
+            width: 18px;
+            height: 18px;
+            color: var(--brand-green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .audience-section {
+            background: var(--bg-secondary);
+        }
+
+        .audience-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .audience-card {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
+            padding: var(--space-xl);
+        }
+
+        .audience-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .audience-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .audience-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .contact-section {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .form-row {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 640px) {
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .channel-cards {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 640px) {
+            .channel-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .channel-option {
+            display: none;
+        }
+
+        .channel-option-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .channel-option-label:hover {
+            border-color: var(--border-color-hover);
+        }
+
+        .channel-option:checked + .channel-option-label {
+            border-color: var(--brand-purple);
+            background: rgba(139, 123, 247, 0.1);
+        }
+
+        .channel-option-icon {
+            font-size: 1.5rem;
+        }
+
+        .channel-option-text strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .channel-option-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Partners Logo Section */
+        .partners-section {
+            background: var(--bg-primary);
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 640px) {
+            .partners-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .partners-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .partner-logo-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            min-height: 140px;
+        }
+
+        .partner-logo-card:hover {
+            border-color: var(--border-color-hover);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            margin-bottom: var(--space-md);
+        }
+
+        .partner-logo img {
+            max-width: 160px;
+            max-height: 60px;
+            object-fit: contain;
+            opacity: 0.9;
+            transition: opacity var(--transition-fast);
+        }
+
+        .partner-logo-card:hover .partner-logo img {
+            opacity: 1;
+        }
+
+        .partner-logo-name {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .partner-logo-name svg {
+            width: 12px;
+            height: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C50 10, 50 50, 50 50 L10 50 C10 50, 10 30, 30 15 C40 8, 50 10, 50 10" fill="#f5b84c"/>
+                        <path d="M50 10 C50 10, 60 8, 70 15 C90 30, 90 50, 90 50 L50 50 L50 10" fill="#1a8a5c"/>
+                        <path d="M10 50 L50 50 L50 90 C30 90, 10 70, 10 50" fill="#f5f5f0"/>
+                        <path d="M50 50 L90 50 C90 70, 70 90, 50 90 L50 50" fill="#1a1a1a"/>
+                    </svg>
+                </div>
+                Ampli
+            </a>
+
+            <nav class="nav-desktop">
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger">
+                        Newsletters
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/berlin/" class="nav-dropdown-item">
+                            <div class="nav-dropdown-icon">🏙️</div>
+                            <div class="nav-dropdown-text">
+                                <strong>Ampli Berlin</strong>
+                                <span>Jobs, events & community</span>
+                            </div>
+                        </a>
+                        <a href="/vibe-ai/" class="nav-dropdown-item">
+                            <div class="nav-dropdown-icon">🤖</div>
+                            <div class="nav-dropdown-text">
+                                <strong>Ampli Vibe AI</strong>
+                                <span>AI tools & trends</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <a href="/" class="nav-link">Subscribe</a>
+                <a href="/partners/" class="nav-link" style="color: var(--text-primary);">Partner With Us</a>
+                <a href="https://ampli.substack.com" target="_blank" class="btn btn-secondary btn-sm">Read on Substack</a>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile">
+        <a href="/berlin/">Ampli Berlin</a>
+        <a href="/vibe-ai/">Ampli Vibe AI</a>
+        <a href="/">Subscribe</a>
+        <a href="/partners/">Partner With Us</a>
+        <a href="https://ampli.substack.com" target="_blank">Read on Substack</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero partner-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient hero-gradient-1"></div>
+            <div class="hero-gradient hero-gradient-2"></div>
+            <div class="hero-grid-pattern"></div>
+        </div>
+
+        <div class="container">
+            <div class="text-center" style="max-width: 800px; margin: 0 auto;">
+                <div class="hero-badge fade-in" style="margin: 0 auto var(--space-lg);">
+                    <span class="pulse"></span>
+                    <span>FOR SPONSORS & PARTNERS</span>
+                </div>
+
+                <h1 class="fade-in fade-in-delay-1">
+                    <span class="text-gradient">Amplify</span> Your Reach
+                </h1>
+
+                <p class="fade-in fade-in-delay-2" style="font-size: 1.25rem; color: var(--text-secondary); margin: var(--space-lg) auto var(--space-xl); max-width: 600px;">
+                    Connect with engaged tech professionals through targeted sponsorship. Reach Berlin's tech scene or the global AI builder community.
+                </p>
+
+                <div class="fade-in fade-in-delay-3 flex gap-md" style="justify-content: center; flex-wrap: wrap;">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        Get in Touch
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#options" class="btn btn-secondary btn-lg">View Options</a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid fade-in fade-in-delay-4">
+                <div class="stat-card card">
+                    <div class="stat-card-value gradient">5K+</div>
+                    <div class="stat-card-label">Total Subscribers</div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-card-value gradient">45%</div>
+                    <div class="stat-card-label">Avg. Open Rate</div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-card-value gradient">12%</div>
+                    <div class="stat-card-label">Avg. Click Rate</div>
+                </div>
+                <div class="stat-card card">
+                    <div class="stat-card-value gradient">2</div>
+                    <div class="stat-card-label">Targeted Channels</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audience Section -->
+    <section class="section audience-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Our Audience</span>
+                <h2>Who You'll Reach</h2>
+                <p>Highly engaged tech professionals actively seeking tools, opportunities, and insights.</p>
+            </div>
+
+            <div class="audience-grid">
+                <div class="audience-card card reveal">
+                    <div class="audience-card-icon">👩‍💻</div>
+                    <div>
+                        <h4>Software Engineers & Developers</h4>
+                        <p>Full-stack, frontend, backend, and mobile developers working at startups and scale-ups.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card card reveal">
+                    <div class="audience-card-icon">🚀</div>
+                    <div>
+                        <h4>Startup Founders & Leaders</h4>
+                        <p>Founders, CTOs, and engineering managers building the next generation of tech companies.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card card reveal">
+                    <div class="audience-card-icon">🤖</div>
+                    <div>
+                        <h4>AI & ML Practitioners</h4>
+                        <p>AI engineers, data scientists, and builders working with LLMs, agents, and ML systems.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card card reveal">
+                    <div class="audience-card-icon">📍</div>
+                    <div>
+                        <h4>Berlin Tech Community</h4>
+                        <p>Professionals actively engaged in Berlin's thriving startup and tech ecosystem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Partners Section -->
+    <section class="section partners-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Trusted By</span>
+                <h2>Our Partners</h2>
+                <p>We've partnered with leading companies and organizations in the tech ecosystem.</p>
+            </div>
+
+            <div class="partners-grid">
+                <!-- Berlin Product Managers -->
+                <a href="https://berlinproductpeople.com" target="_blank" rel="noopener" class="partner-logo-card reveal">
+                    <div class="partner-logo">
+                        <img src="../images/partners/bpm.svg" alt="Berlin Product Managers">
+                    </div>
+                    <span class="partner-logo-name">
+                        Berlin Product Managers
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Spiced Academy -->
+                <a href="https://spiced.academy" target="_blank" rel="noopener" class="partner-logo-card reveal">
+                    <div class="partner-logo color-logo">
+                        <img src="../images/partners/spiced.svg" alt="Spiced Academy">
+                    </div>
+                    <span class="partner-logo-name">
+                        Spiced Academy
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- SumUp -->
+                <a href="https://sumup.com" target="_blank" rel="noopener" class="partner-logo-card reveal">
+                    <div class="partner-logo">
+                        <img src="../images/partners/sumup.svg" alt="SumUp">
+                    </div>
+                    <span class="partner-logo-name">
+                        SumUp
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- HelloFresh -->
+                <a href="https://hellofresh.com" target="_blank" rel="noopener" class="partner-logo-card reveal">
+                    <div class="partner-logo color-logo">
+                        <img src="../images/partners/hellofresh.svg" alt="HelloFresh">
+                    </div>
+                    <span class="partner-logo-name">
+                        HelloFresh
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </span>
+                </a>
+
+                <!-- Product Led Summit -->
+                <a href="https://world.productledalliance.com/location/berlin" target="_blank" rel="noopener" class="partner-logo-card reveal">
+                    <div class="partner-logo color-logo">
+                        <img src="../images/partners/pla.svg" alt="Product Led Summit">
+                    </div>
+                    <span class="partner-logo-name">
+                        Product Led Summit
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Options Section -->
+    <section class="section" id="options">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Partnership Options</span>
+                <h2>Ways to Partner</h2>
+                <p>Choose the format that works best for your goals and budget.</p>
+            </div>
+
+            <div class="options-grid">
+                <div class="option-card card reveal">
+                    <div class="option-card-icon">📣</div>
+                    <h3>Newsletter Sponsorship</h3>
+                    <p>Feature your product, service, or job listing prominently in our weekly newsletters.</p>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Native ad placement in newsletter</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Targeted to specific channel audience</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Performance tracking provided</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Inquire</a>
+                </div>
+
+                <div class="option-card card reveal">
+                    <div class="option-card-icon">✍️</div>
+                    <h3>Guest Content</h3>
+                    <p>Share your expertise with our audience through thought leadership content.</p>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Guest articles and insights</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Expert interviews and features</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Build authority and brand awareness</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Pitch a Post</a>
+                </div>
+
+                <div class="option-card card reveal">
+                    <div class="option-card-icon">💼</div>
+                    <h3>Job Listings</h3>
+                    <p>Reach active job seekers in Berlin's tech ecosystem through Ampli Berlin.</p>
+                    <ul>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Featured job placement</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Reach Berlin-based tech talent</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Multiple listing packages available</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Post a Job</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-section">
+                <div class="section-header reveal">
+                    <span class="label">Get Started</span>
+                    <h2>Let's Talk Partnership</h2>
+                    <p>Tell us about your goals and we'll craft a partnership that works for you.</p>
+                </div>
+
+                <form class="contact-form card reveal" style="padding: var(--space-2xl);" action="https://formspree.io/f/your-form-id" method="POST">
+                    <div class="form-row">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-input" placeholder="john@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Company / Organization</label>
+                        <input type="text" name="company" class="form-input" placeholder="Acme Inc.">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Which channel(s) are you interested in?</label>
+                        <div class="channel-cards">
+                            <input type="checkbox" id="partner-berlin" name="channels" value="berlin" class="channel-option">
+                            <label for="partner-berlin" class="channel-option-label">
+                                <span class="channel-option-icon">🏙️</span>
+                                <div class="channel-option-text">
+                                    <strong>Ampli Berlin</strong>
+                                    <span>Berlin tech jobs & community</span>
+                                </div>
+                            </label>
+
+                            <input type="checkbox" id="partner-ai" name="channels" value="ai" class="channel-option">
+                            <label for="partner-ai" class="channel-option-label">
+                                <span class="channel-option-icon">🤖</span>
+                                <div class="channel-option-text">
+                                    <strong>Ampli Vibe AI</strong>
+                                    <span>AI tools & modern makers</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Tell us about your goals</label>
+                        <textarea name="message" class="form-textarea" placeholder="What are you looking to achieve? What's your timeline and budget range?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Send Message
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+
+                    <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin: 0;">
+                        Or email us directly at <a href="mailto:partners@ampli.xyz" style="color: var(--brand-purple);">partners@ampli.xyz</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 10 C50 10, 50 50, 50 50 L10 50 C10 50, 10 30, 30 15 C40 8, 50 10, 50 10" fill="#f5b84c"/>
+                                <path d="M50 10 C50 10, 60 8, 70 15 C90 30, 90 50, 90 50 L50 50 L50 10" fill="#1a8a5c"/>
+                                <path d="M10 50 L50 50 L50 90 C30 90, 10 70, 10 50" fill="#f5f5f0"/>
+                                <path d="M50 50 L90 50 C90 70, 70 90, 50 90 L50 50" fill="#1a1a1a"/>
+                            </svg>
+                        </div>
+                        Ampli
+                    </a>
+                    <p>Your signal network for the tech world. Made with ❤️ in Berlin.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Channels</h4>
+                    <a href="/berlin/">Ampli Berlin</a>
+                    <a href="/vibe-ai/">Ampli Vibe AI</a>
+                    <a href="https://ampli.substack.com" target="_blank">Substack</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Partner</h4>
+                    <a href="/partners/">Sponsorship</a>
+                    <a href="mailto:partners@ampli.xyz">Guest Post</a>
+                    <a href="mailto:partners@ampli.xyz">Job Listings</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <a href="https://twitter.com/AmpliNewsletter" target="_blank">Twitter / X</a>
+                    <a href="https://linkedin.com/company/ampli-newsletter" target="_blank">LinkedIn</a>
+                    <a href="mailto:hello@ampli.xyz">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Ampli. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://twitter.com/AmpliNewsletter" target="_blank" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/company/ampli-newsletter" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://ampli.substack.com" target="_blank" aria-label="Substack">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
