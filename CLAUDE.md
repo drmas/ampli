@@ -28,6 +28,20 @@ The site uses a comprehensive design system defined in `css/styles.css`:
 - Border radius scale: `--radius-sm` to `--radius-full`
 - Consistent animation timings: `--transition-fast/base/slow`
 
+### Frontend Design Approach
+When making UI changes, visual improvements, or designing new components, always use the frontend-design skill to ensure:
+- Distinctive, production-grade aesthetics that avoid generic AI design patterns
+- Cohesive visual design matching the Tech Signal brand (cyan/blue electric palette)
+- Creative use of CSS animations, gradients, and effects
+- Thoughtful typography, spacing, and composition
+- CSS-only illustrations where appropriate (e.g., Berlin skyline, AI network visualizations)
+- Signal/broadcast aesthetic with scanlines, glows, and pulsing animations
+
+Examples of frontend-design skill usage:
+- Issue cards: Broadcast signal cards with scanline effects and signal-pulse animations
+- Berlin cross-promotion: CSS-only skyline with TV tower, Brandenburg Gate, and buildings
+- AI cross-promotion: Animated neural network with pulsing nodes and flowing connections
+
 ## Key Components
 
 ### Header & Navigation
