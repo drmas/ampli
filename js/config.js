@@ -14,7 +14,8 @@ export const LINKS = {
     substackVibeAISubscribe: 'https://amplivibeai.substack.com/subscribe',
     luma: 'https://luma.com/ampli',
     twitter: 'https://x.com/amplixyz',
-    linkedin: 'https://www.linkedin.com/company/ampli-community'
+    linkedin: 'https://www.linkedin.com/company/ampli-community',
+    instagram: 'https://www.instagram.com/ampli.xyz/'
 };
 
 // Make available globally for HTML mailto links
