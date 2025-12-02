@@ -10,13 +10,13 @@
    CSS VARIABLES
    ============================================ */
 :root {
-    /* Brand Colors - Tech Signal Aesthetic */
-    --signal-cyan: #00D9FF;
-    --signal-blue: #0095FF;
-    --signal-electric: #00FFCC;
-    --brand-green: #1a8a5c;
-    --brand-white: #f5f5f0;
-    --brand-black: #1a1a1a;
+    /* Brand Colors - Ampli Brand Palette */
+    --brand-yellow: #FFC53E;          /* Accent Yellow */
+    --brand-purple: #7F7EFF;          /* Accent Purple */
+    --brand-green: #00916E;           /* Primary Green */
+    --brand-primary: #00916E;         /* Primary Green (alias) */
+    --brand-white: #f5f5f0;           /* BG Light */
+    --brand-black: #1a1a1a;           /* Text Dark */
 
     /* Background Colors */
     --bg-primary: #08070d;
@@ -30,20 +30,23 @@
     --text-secondary: #a8a8b8;
     --text-muted: #5a5a6e;
 
-    /* Unified Signal Theme */
-    --channel-primary: var(--signal-cyan);
-    --channel-secondary: var(--signal-blue);
-    --channel-glow: rgba(0, 217, 255, 0.4);
+    /* Unified Signal Theme - Using Brand Colors */
+    --signal-cyan: var(--brand-purple);
+    --signal-blue: var(--brand-purple);
+    --signal-electric: var(--brand-green);
+    --channel-primary: var(--brand-purple);
+    --channel-secondary: var(--brand-green);
+    --channel-glow: rgba(127, 126, 255, 0.4);
 
-    /* Berlin Newsletter - Warmer cyan accent */
-    --berlin-primary: #00D9FF;
-    --berlin-secondary: #00B8E6;
-    --berlin-glow: rgba(0, 217, 255, 0.35);
+    /* Berlin Newsletter - Yellow accent */
+    --berlin-primary: var(--brand-yellow);
+    --berlin-secondary: #E6B335;
+    --berlin-glow: rgba(255, 197, 62, 0.35);
 
-    /* Vibe AI Newsletter - Cooler blue accent */
-    --ai-primary: #0095FF;
-    --ai-secondary: #0077CC;
-    --ai-glow: rgba(0, 149, 255, 0.35);
+    /* Vibe AI Newsletter - Purple accent */
+    --ai-primary: var(--brand-purple);
+    --ai-secondary: #6B6AE6;
+    --ai-glow: rgba(127, 126, 255, 0.35);
 
     /* Utility */
     --border-color: rgba(255, 255, 255, 0.08);
