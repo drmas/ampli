@@ -91,6 +91,415 @@
             justify-content: center;
         }
 
+        /* ============================================
+           NEW HERO - TECH SIGNAL HUB
+           ============================================ */
+
+        .berlin-hero-v2 {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-3xl);
+            background: linear-gradient(180deg, #0a0a0f 0%, #151520 50%, #0a0a0f 100%);
+            overflow: hidden;
+        }
+
+        /* Animated Grid Background */
+        .signal-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(245, 184, 76, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 184, 76, 0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: grid-flow 20s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes grid-flow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        /* Scanlines Effect */
+        .signal-scanlines {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                rgba(245, 184, 76, 0.02) 1px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* District Signal Bars */
+        .district-signals {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: clamp(1rem, 4vw, 3rem);
+            padding: 0 var(--space-xl);
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .district-signal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            flex: 1;
+            max-width: 80px;
+            animation: signal-rise 1s ease-out var(--delay) backwards;
+        }
+
+        @keyframes signal-rise {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+
+        .signal-bar {
+            width: 100%;
+            height: var(--height);
+            background: linear-gradient(
+                to top,
+                rgba(245, 184, 76, 0.8),
+                rgba(245, 184, 76, 0.2)
+            );
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            animation: signal-pulse 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(245, 184, 76, 0.3);
+        }
+
+        @keyframes signal-pulse {
+            0%, 100% {
+                opacity: 0.8;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 1;
+                filter: brightness(1.3);
+            }
+        }
+
+        .district-signal span {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Hero Content */
+        .hero-content-v2 {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            animation: content-reveal 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes content-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        /* Live Badge */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) var(--space-lg);
+            background: rgba(245, 184, 76, 0.1);
+            border: 1px solid rgba(245, 184, 76, 0.3);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xl);
+            font-family: 'Courier New', monospace;
+        }
+
+        .live-pulse {
+            width: 8px;
+            height: 8px;
+            background: #f5b84c;
+            border-radius: 50%;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px #f5b84c;
+            }
+            50% {
+                opacity: 0.5;
+                box-shadow: 0 0 20px #f5b84c;
+            }
+        }
+
+        .live-text {
+            color: #f5b84c;
+        }
+
+        .live-dot {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.5rem;
+        }
+
+        .live-count {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Hero Title */
+        .hero-title-v2 {
+            font-size: clamp(3rem, 12vw, 7rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.02em;
+        }
+
+        .title-line {
+            display: block;
+        }
+
+        .title-highlight {
+            background: linear-gradient(
+                135deg,
+                #f5b84c 0%,
+                #ffd700 50%,
+                #f5b84c 100%
+            );
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Value Proposition */
+        .hero-value {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            font-weight: 500;
+        }
+
+        .value-icon {
+            color: #f5b84c;
+            font-size: 0.9em;
+        }
+
+        .value-separator {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* CTA Section */
+        .hero-cta-v2 {
+            position: relative;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .cta-beacon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(
+                circle,
+                rgba(245, 184, 76, 0.3) 0%,
+                transparent 70%
+            );
+            animation: beacon-pulse 3s ease-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes beacon-pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .cta-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg) var(--space-3xl);
+            background: linear-gradient(135deg, #f5b84c 0%, #ffd700 100%);
+            color: #0a0a0f;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow:
+                0 10px 40px rgba(245, 184, 76, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 20px 60px rgba(245, 184, 76, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-primary:active {
+            transform: translateY(0);
+        }
+
+        .cta-arrow {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-primary:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+
+        .cta-meta {
+            display: flex;
+            gap: var(--space-lg);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        /* Activity Ticker */
+        .activity-ticker {
+            background: rgba(245, 184, 76, 0.05);
+            border: 1px solid rgba(245, 184, 76, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .ticker-label {
+            font-family: 'Courier New', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #f5b84c;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: var(--space-2xl);
+            animation: ticker-scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .ticker-icon {
+            font-size: 1.1em;
+        }
+
+        /* Bottom Accent Line */
+        .hero-accent-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                #f5b84c 50%,
+                transparent 100%
+            );
+            box-shadow: 0 0 20px rgba(245, 184, 76, 0.5);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .district-signals {
+                height: 120px;
+                gap: var(--space-md);
+            }
+
+            .district-signal span {
+                font-size: 0.6rem;
+            }
+
+            .hero-value {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .activity-ticker {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+        }
+
         .feature-grid {
             display: grid;
             gap: var(--space-lg);
@@ -245,6 +654,28 @@
                         </a>
                     </div>
                 </div>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger">
+                        About
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/about/team/" class="nav-dropdown-item">
+                            <div class="nav-dropdown-icon">
+                                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="10" cy="6" r="3" fill="currentColor"/>
+                                    <path d="M3 18c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                </svg>
+                            </div>
+                            <div class="nav-dropdown-text">
+                                <strong>Team</strong>
+                                <span>Meet the people behind Ampli</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
                 <a href="#subscribe" class="nav-link">Subscribe</a>
                 <a href="/partners/" class="nav-link">Partner With Us</a>
                 <a href="https://ampli.substack.com" target="_blank" class="btn btn-secondary btn-sm">Read on Substack</a>
@@ -262,61 +693,88 @@
     <nav class="nav-mobile">
         <a href="/berlin/">Ampli Berlin</a>
         <a href="/vibe-ai/">Ampli Vibe AI</a>
+        <a href="/about/team/">Team</a>
         <a href="#subscribe">Subscribe</a>
         <a href="/partners/">Partner With Us</a>
         <a href="https://ampli.substack.com" target="_blank">Read on Substack</a>
     </nav>
 
-    <!-- Hero Section with Berlin Image -->
-    <section class="berlin-hero">
-        <!-- Berlin skyline image -->
-        <div class="berlin-hero-image">
-            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1920&q=80" alt="Berlin TV Tower and cityscape at dusk" loading="eager">
-        </div>
-        <div class="berlin-hero-overlay"></div>
-        <div class="berlin-hero-glow"></div>
+    <!-- Hero Section - Tech Signal Hub -->
+    <section class="berlin-hero-v2">
+        <!-- Animated Grid Background -->
+        <div class="signal-grid"></div>
+        <div class="signal-scanlines"></div>
+
+
 
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge fade-in">
-                    <span class="pulse" style="background: var(--berlin-primary);"></span>
-                    <span>BERLIN • JOBS & COMMUNITY</span>
-                </div>
+            <div class="hero-content-v2">
+                <!-- Live Status Badge -->
+                <!-- <div class="live-badge">
+                    <span class="live-pulse"></span>
+                    <span class="live-text">BROADCASTING LIVE</span>
+                    <span class="live-dot">●</span>
+                    <span class="live-count">47 NEW SIGNALS TODAY</span>
+                </div> -->
 
-                <h1 class="fade-in fade-in-delay-1">
-                    Your Way to Berlin's <span class="text-channel">Tech World</span>
+                <!-- Main Title -->
+                <h1 class="hero-title-v2">
+                    <span class="title-line">Berlin Tech</span>
+                    <span class="title-line title-highlight">Community</span>
                 </h1>
 
-                <p class="hero-description fade-in fade-in-delay-2">
-                    The ultimate destination for Berlin tech. Job opportunities, must-attend events, and insights from industry leaders—delivered weekly to your inbox.
+                <!-- Value Proposition -->
+                <p class="hero-value">
+                    <span class="value-icon">▸</span> Jobs at top startups
+                    <span class="value-separator">•</span>
+                    <span class="value-icon">▸</span> Exclusive events
+                    <span class="value-separator">•</span>
+                    <span class="value-icon">▸</span> Industry insights
                 </p>
 
-                <div class="hero-cta fade-in fade-in-delay-3">
-                    <a href="#subscribe" class="btn btn-channel btn-lg">
-                        Subscribe Free
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+                <!-- Subscribe CTA with Beacon -->
+                <div class="hero-cta-v2">
+                    <div class="cta-beacon"></div>
+                    <a href="#subscribe" class="cta-primary">
+                        <span class="cta-text">Start Receiving Now</span>
+                        <span class="cta-arrow">→</span>
                     </a>
-                    <a href="#events" class="btn btn-secondary btn-lg">Our Events</a>
+                    <div class="cta-meta">
+                        <span>✓ Free forever</span>
+                        <span>✓ Unsubscribe anytime</span>
+                        <span>✓ 3,000+ subscribers</span>
+                    </div>
                 </div>
 
-                <div class="hero-stats fade-in fade-in-delay-4">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value" style="color: var(--berlin-primary);">3K+</div>
-                        <div class="hero-stat-label">Subscribers</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value" style="color: var(--berlin-primary);">Weekly</div>
-                        <div class="hero-stat-label">Updates</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value" style="color: var(--berlin-primary);">5 min</div>
-                        <div class="hero-stat-label">Read Time</div>
+                <!-- Rolling Activity Ticker -->
+                <div class="activity-ticker">
+                    <div class="ticker-label"></div>
+                    <div class="ticker-content">
+                        <span class="ticker-item">
+                            <span class="ticker-icon">📍</span> Senior Engineer @ Zalando
+                        </span>
+                        <span class="ticker-item">
+                            <span class="ticker-icon">🎯</span> Product Manager @ GetYourGuide
+                        </span>
+                        <span class="ticker-item">
+                            <span class="ticker-icon">🚀</span> AI Meetup @ Factory Berlin
+                        </span>
+                        <span class="ticker-item">
+                            <span class="ticker-icon">💼</span> Frontend Dev @ HelloFresh
+                        </span>
+                        <span class="ticker-item">
+                            <span class="ticker-icon">📍</span> Senior Engineer @ Zalando
+                        </span>
+                        <span class="ticker-item">
+                            <span class="ticker-icon">🎯</span> Product Manager @ GetYourGuide
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Bottom Accent Line -->
+        <div class="hero-accent-line"></div>
     </section>
 
     <!-- What You Get Section -->
@@ -487,17 +945,17 @@
                 </div>
 
                 <div class="footer-column">
-                    <h4>Partner</h4>
-                    <a href="/partners/">Sponsorship</a>
-                    <a href="mailto:amplitechcom@gmail.com">Guest Post</a>
-                    <a href="mailto:amplitechcom@gmail.com">Job Listings</a>
+                    <h4>About</h4>
+                    <a href="/about/team/">Team</a>
+                    <a href="/partners/">Partner With Us</a>
+                    <a href="mailto:amplitechcom@gmail.com">Contact</a>
                 </div>
 
                 <div class="footer-column">
                     <h4>Connect</h4>
                     <a href="https://x.com/amplixyz" target="_blank">Twitter / X</a>
                     <a href="https://www.linkedin.com/company/ampli-community" target="_blank">LinkedIn</a>
-                    <a href="mailto:amplitechcom@gmail.com">Contact</a>
+                    <a href="mailto:amplitechcom@gmail.com">Email</a>
                 </div>
             </div>
 
