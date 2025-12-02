@@ -185,5 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in page-specific scripts
 window.Ampli = {
-    fetchRSSFeed
+    fetchRSSFeed,
+    initScrollReveal
 };

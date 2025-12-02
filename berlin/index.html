@@ -91,117 +91,6 @@
             justify-content: center;
         }
 
-        /* Event Photo Gallery */
-        .events-gallery {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .events-gallery::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: var(--berlin-primary);
-            filter: blur(200px);
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-sm);
-        }
-
-        @media (min-width: 640px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space-md);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .gallery-item {
-            position: relative;
-            aspect-ratio: 4/3;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            cursor: pointer;
-            background: var(--bg-tertiary);
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity var(--transition-normal);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-slow);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* Featured gallery items - larger */
-        .gallery-item.featured {
-            grid-column: span 2;
-            grid-row: span 2;
-            aspect-ratio: 1;
-        }
-
-        @media (max-width: 639px) {
-            .gallery-item.featured {
-                grid-column: span 2;
-                grid-row: span 1;
-                aspect-ratio: 16/9;
-            }
-        }
-
-        .gallery-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: var(--space-xl);
-            color: var(--text-muted);
-            border: 2px dashed var(--border-color);
-            border-radius: var(--radius-lg);
-            background: var(--bg-tertiary);
-        }
-
-        .gallery-placeholder svg {
-            width: 48px;
-            height: 48px;
-            margin-bottom: var(--space-md);
-            opacity: 0.5;
-        }
-
-        .gallery-placeholder p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
         .feature-grid {
             display: grid;
             gap: var(--space-lg);
@@ -298,112 +187,6 @@
             text-align: center;
             padding: var(--space-2xl);
             color: var(--text-muted);
-        }
-
-        /* Company Logos - Infinite Carousel */
-        .company-logos {
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
-            max-width: 100%;
-            padding: var(--space-lg) 0;
-        }
-
-        /* Gradient fade masks for polished edges */
-        .company-logos::before,
-        .company-logos::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .company-logos::before {
-            left: 0;
-            background: linear-gradient(90deg, var(--bg-secondary) 0%, transparent 100%);
-        }
-
-        .company-logos::after {
-            right: 0;
-            background: linear-gradient(270deg, var(--bg-secondary) 0%, transparent 100%);
-        }
-
-        .company-logos-track {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2xl);
-            width: fit-content;
-            animation: slideLogos 40s linear infinite;
-        }
-
-        /* Pause animation on hover for accessibility */
-        .company-logos:hover .company-logos-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes slideLogos {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .company-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            flex-shrink: 0;
-            opacity: 0.5;
-            filter: grayscale(100%) brightness(1.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .company-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.15) translateY(-2px);
-        }
-
-        .company-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: var(--radius-sm);
-        }
-
-        @media (min-width: 768px) {
-            .company-logo {
-                width: 64px;
-                height: 64px;
-            }
-
-            .company-logos-track {
-                gap: var(--space-3xl);
-            }
-
-            .company-logos::before,
-            .company-logos::after {
-                width: 160px;
-            }
-        }
-
-        /* Respect user motion preferences */
-        @media (prefers-reduced-motion: reduce) {
-            .company-logos-track {
-                animation: none;
-            }
-
-            .company-logos {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
         }
     </style>
 </head>
@@ -575,132 +358,15 @@
 
     <!-- Social Proof - Company Logos -->
     <section class="section social-proof" style="background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="label">Trusted by Professionals</span>
-                <h2>Readers from Leading Companies</h2>
-                <p>Join thousands of professionals from Berlin's top tech companies and institutions.</p>
-            </div>
-
-            <div class="company-logos reveal">
-                <div class="company-logos-track">
-                    <!-- First set of logos -->
-                    <div class="company-logo">
-                        <img src="../images/companies/zalando.png" alt="Zalando" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/getyourguide.png" alt="GetYourGuide" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/deliveryhero.png" alt="Delivery Hero" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/hellofresh.png" alt="HelloFresh" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/airhelp.png" alt="AirHelp" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/kittl.png" alt="Kittl" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/heyjobs.png" alt="HeyJobs" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/esmt.png" alt="ESMT Berlin" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/eth.png" alt="ETH Zürich" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/hometogo.png" alt="HomeToGo" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/traderepublic.png" alt="Trade Republic" loading="lazy">
-                    </div>
-
-                    <!-- Duplicate set for seamless loop -->
-                    <div class="company-logo">
-                        <img src="../images/companies/zalando.png" alt="Zalando" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/getyourguide.png" alt="GetYourGuide" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/deliveryhero.png" alt="Delivery Hero" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/hellofresh.png" alt="HelloFresh" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/airhelp.png" alt="AirHelp" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/kittl.png" alt="Kittl" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/heyjobs.png" alt="HeyJobs" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/esmt.png" alt="ESMT Berlin" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/eth.png" alt="ETH Zürich" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/hometogo.png" alt="HomeToGo" loading="lazy">
-                    </div>
-                    <div class="company-logo">
-                        <img src="../images/companies/traderepublic.png" alt="Trade Republic" loading="lazy">
-                    </div>
-                </div>
-            </div>
+        <div class="container" id="berlin-company-logos">
+            <!-- Component will render here -->
         </div>
     </section>
 
     <!-- Event Photo Gallery -->
     <section class="section events-gallery">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="label">Event Highlights</span>
-                <h2>Moments from Our Meetups</h2>
-                <p>Snapshots from our community gatherings—tech talks, networking, and good vibes.</p>
-            </div>
-
-            <div class="gallery-grid reveal">
-                <!-- Featured event photo -->
-                <div class="gallery-item featured">
-                    <img src="../images/events/event-1.jpg" alt="Tech professionals networking at Berlin meetup" loading="lazy">
-                </div>
-
-                <!-- Additional event photos -->
-                <div class="gallery-item">
-                    <img src="../images/events/event-2.jpg" alt="Engaging tech talk presentation" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/events/event-3.jpg" alt="Collaborative workshop session" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/events/event-4.jpg" alt="Community members discussing tech topics" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/events/event-5.jpg" alt="Casual networking and conversations" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="../images/events/event-6.jpg" alt="Panel discussion with industry experts" loading="lazy">
-                </div>
-            </div>
-
-            <div class="text-center reveal" style="margin-top: var(--space-xl);">
-                <a href="https://luma.com/ampli" target="_blank" class="btn btn-channel">
-                    View All Upcoming Events on Luma
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                        <polyline points="15 3 21 3 21 9"/>
-                        <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                </a>
-            </div>
+        <div class="container" id="berlin-event-gallery">
+            <!-- Component will render here -->
         </div>
     </section>
 
@@ -867,10 +533,19 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/config.js"></script>
+    <script src="../js/components/companyLogos.js"></script>
+    <script src="../js/components/eventGallery.js"></script>
     <script>
         // Load Berlin RSS feed
         document.addEventListener('DOMContentLoaded', () => {
             Ampli.fetchRSSFeed('https://ampli.substack.com/feed', 'issues-feed', 4);
+
+            Ampli.renderCompanyLogos('berlin-company-logos', {
+                basePath: '../'
+            });
+            Ampli.renderEventGallery('berlin-event-gallery', {
+                basePath: '../'
+            });
         });
     </script>
 </body>

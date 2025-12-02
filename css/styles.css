@@ -1917,3 +1917,225 @@ p {
 @media (min-width: 1024px) {
     .lg\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ============================================
+   SOCIAL PROOF COMPONENTS
+   Reusable components for company logos and event galleries
+   ============================================ */
+
+/* Event Photo Gallery */
+.events-gallery {
+    position: relative;
+    overflow: hidden;
+}
+
+.events-gallery::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: var(--berlin-primary);
+    filter: blur(200px);
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+}
+
+@media (min-width: 640px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-md);
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--bg-tertiary);
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Featured gallery items - larger */
+.gallery-item.featured {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: 1;
+}
+
+@media (max-width: 639px) {
+    .gallery-item.featured {
+        grid-column: span 2;
+        grid-row: span 1;
+        aspect-ratio: 16/9;
+    }
+}
+
+.gallery-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-xl);
+    color: var(--text-muted);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--bg-tertiary);
+}
+
+.gallery-placeholder svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-md);
+    opacity: 0.5;
+}
+
+.gallery-placeholder p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Company Logos Carousel */
+.company-logos {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: var(--space-lg) 0;
+}
+
+/* Gradient fade masks for polished edges */
+.company-logos::before,
+.company-logos::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.company-logos::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-secondary) 0%, transparent 100%);
+}
+
+.company-logos::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg-secondary) 0%, transparent 100%);
+}
+
+.company-logos-track {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    width: fit-content;
+    animation: slideLogos 40s linear infinite;
+}
+
+/* Pause animation on hover for accessibility */
+.company-logos:hover .company-logos-track {
+    animation-play-state: paused;
+}
+
+@keyframes slideLogos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    filter: grayscale(100%) brightness(1.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.company-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.15) translateY(-2px);
+}
+
+.company-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+@media (min-width: 768px) {
+    .company-logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .company-logos-track {
+        gap: var(--space-3xl);
+    }
+
+    .company-logos::before,
+    .company-logos::after {
+        width: 160px;
+    }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .company-logos-track {
+        animation: none;
+    }
+
+    .company-logos {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

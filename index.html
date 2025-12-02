@@ -259,6 +259,20 @@
         </div>
     </section>
 
+    <!-- Social Proof - Company Logos -->
+    <section class="section social-proof" style="background: var(--bg-secondary);">
+        <div class="container" id="home-company-logos">
+            <!-- Component will render here -->
+        </div>
+    </section>
+
+    <!-- Moments from Our Meetups -->
+    <section class="section events-gallery">
+        <div class="container" id="home-event-gallery">
+            <!-- Component will render here -->
+        </div>
+    </section>
+
     <!-- Subscribe Section -->
     <section class="section" id="subscribe" style="background: var(--bg-secondary);">
         <div class="container">
@@ -378,5 +392,17 @@
 
     <script src="js/main.js"></script>
     <script src="js/config.js"></script>
+    <script src="js/components/companyLogos.js"></script>
+    <script src="js/components/eventGallery.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Ampli.renderCompanyLogos('home-company-logos', {
+                basePath: ''
+            });
+            Ampli.renderEventGallery('home-event-gallery', {
+                basePath: ''
+            });
+        });
+    </script>
 </body>
 </html>
