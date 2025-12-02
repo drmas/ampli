@@ -17,6 +17,19 @@
     <meta property="og:description" content="Curated tech signals delivered to your inbox. Berlin jobs & events, AI tools & trends.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ampli.xyz">
+
+    <style>
+        /* Newsletter checkbox styling */
+        #home-subscribe-form label:hover {
+            border-color: rgba(255, 255, 255, 0.3) !important;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #home-subscribe-form label:has(input:checked) {
+            border-color: var(--brand-cyan) !important;
+            background: rgba(0, 217, 255, 0.1);
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -285,8 +298,20 @@
                     <h2 style="margin-bottom: var(--space-md);">Subscribe to Ampli</h2>
                     <p style="margin-bottom: var(--space-xl);">Get Berlin tech jobs & events, AI tools & trends—delivered weekly to your inbox. Free forever.</p>
 
-                    <form action="https://ampli.substack.com/api/v1/free?nojs=true" method="post" class="subscribe-form inline">
-                        <input type="email" name="email" class="form-input" placeholder="Enter your email address" required>
+                    <form id="home-subscribe-form" class="subscribe-form" style="display: flex; flex-direction: column; gap: var(--space-md);">
+                        <input type="email" id="home-email" class="form-input" placeholder="Enter your email address" required>
+
+                        <div style="display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap; margin: var(--space-md) 0;">
+                            <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; padding: var(--space-sm) var(--space-md); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); transition: all 0.3s ease;">
+                                <input type="checkbox" name="newsletter" value="berlin" class="channel-checkbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--brand-yellow);">
+                                <span style="font-weight: 500;">Ampli Berlin</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; padding: var(--space-sm) var(--space-md); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); transition: all 0.3s ease;">
+                                <input type="checkbox" name="newsletter" value="vibeai" class="channel-checkbox" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--brand-purple);">
+                                <span style="font-weight: 500;">Vibe AI</span>
+                            </label>
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-lg">
                             Subscribe
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -401,6 +426,36 @@
             });
             Ampli.renderEventGallery('home-event-gallery', {
                 basePath: ''
+            });
+        });
+    </script>
+    <script>
+        // Handle home page newsletter selection
+        document.getElementById('home-subscribe-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('home-email').value;
+            const checkboxes = document.querySelectorAll('.channel-checkbox:checked');
+
+            // Validate at least one newsletter selected
+            if (checkboxes.length === 0) {
+                alert('Please select at least one newsletter to subscribe to.');
+                return;
+            }
+
+            // Get selected newsletters
+            const selectedNewsletters = Array.from(checkboxes).map(cb => cb.value);
+
+            // Build Substack URLs
+            const urls = {
+                berlin: 'https://ampli.substack.com/subscribe',
+                vibeai: 'https://amplivibeai.substack.com/subscribe'
+            };
+
+            // Open each selected newsletter in new tab
+            selectedNewsletters.forEach(newsletter => {
+                const url = urls[newsletter] + '?email=' + encodeURIComponent(email);
+                window.open(url, '_blank');
             });
         });
     </script>
