@@ -5,8 +5,8 @@ Add team member photos here with the following filenames:
 ## Required Images:
 
 1. **attia.jpg** - Photo for Attia (@ATTIAMO)
-2. **nada.jpg** - Photo for Nada Elnadi (@NADAELNADI)
-3. **medha.jpg** - Photo for Medha (@MEDHA315)
+2. **Nada.jpg** - Photo for Nada Elnadi (@NADAELNADI)
+3. **Medha.jpg** - Photo for Medha (@MEDHA315)
 
 ## Image Specifications:
 
