@@ -1661,27 +1661,29 @@ p {
    HERO SECTIONS
    ============================================ */
 .hero {
-    min-height: 70vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     padding-top: var(--header-height);
     padding-bottom: var(--space-3xl);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    z-index: 0;
+    background: linear-gradient(180deg, #0b0d18 0%, #0a0c14 40%, #0a0f1c 100%);
 }
 
 @media (max-width: 768px) {
     .hero {
-        min-height: 70vh;
+        min-height: calc(100vh - var(--header-height));
         padding-top: calc(var(--header-height) + var(--space-2xl));
-        padding-bottom: var(--space-2xl);
+        padding-bottom: var(--space-5xl);
     }
 }
 
 .hero-bg {
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     left: 0;
     top: 0;
 }
@@ -1715,12 +1717,38 @@ p {
         linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(100% 80% at 30% 20%, rgba(0, 217, 255, 0.25), transparent 60%),
+                radial-gradient(90% 70% at 70% 60%, rgba(127, 126, 255, 0.2), transparent 65%);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-grid-pattern {
+        mask-image: none;
+        -webkit-mask-image: none;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        background-size: 48px 48px;
+        opacity: 0.5;
+    }
 }
 
 .hero-content {
     display: grid;
     gap: var(--space-3xl);
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -1798,7 +1826,19 @@ p {
     display: flex;
     gap: var(--space-2xl);
     padding-top: var(--space-xl);
-    border-top: 1px solid var(--border-color);
+    position: relative;
+}
+
+.hero-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--signal-cyan), var(--signal-electric));
+    opacity: 0.35;
+    pointer-events: none;
 }
 
 @media (max-width: 768px) {
