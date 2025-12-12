@@ -133,6 +133,113 @@
             color: var(--text-muted);
         }
 
+        /* Sources Carousel */
+        .sources-section {
+            overflow: hidden;
+        }
+
+        .sources-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: var(--space-lg) 0;
+        }
+
+        /* Gradient fade masks on edges */
+        .sources-carousel::before,
+        .sources-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .sources-carousel::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-primary), transparent);
+        }
+
+        .sources-carousel::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-primary), transparent);
+        }
+
+        .sources-track {
+            display: flex;
+            gap: var(--space-xl);
+            animation: slideSourceLogos 10s linear infinite;
+        }
+
+        .sources-track:hover {
+            animation-play-state: paused;
+        }
+
+        .source-logo {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+            height: 60px;
+            padding: var(--space-md) var(--space-lg);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            transition: var(--transition-base);
+            opacity: 0.7;
+        }
+
+        .source-logo:hover {
+            opacity: 1;
+            border-color: var(--ai-primary);
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px var(--ai-glow);
+        }
+
+        .source-logo img {
+            max-width: 100%;
+            max-height: 36px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        @keyframes slideSourceLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Reduced motion: static scrollable container */
+        @media (prefers-reduced-motion: reduce) {
+            .sources-track {
+                animation: none;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sources-carousel {
+                overflow-x: auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .sources-carousel::before,
+            .sources-carousel::after {
+                width: 140px;
+            }
+
+            .source-logo {
+                min-width: 160px;
+                height: 70px;
+            }
+
+            .source-logo img {
+                max-height: 42px;
+            }
+        }
+
         /* AI-themed decorative elements */
         .ai-pattern {
             position: absolute;
@@ -247,8 +354,8 @@
     <nav class="nav-mobile">
         <a href="/berlin/" data-cta="vibeai_mobile_nav_berlin">Ampli Berlin</a>
         <a href="/vibe-ai/" data-cta="vibeai_mobile_nav_vibe_ai">Ampli Vibe AI</a>
-        <a href="/about/team/" data-cta="vibeai_mobile_nav_team">Team</a>
         <a href="#subscribe" data-cta="vibeai_mobile_nav_subscribe">Subscribe</a>
+    <a href="/about/team/" data-cta="vibeai_mobile_nav_team">Team</a>
         <a href="/partners/" data-cta="vibeai_mobile_nav_partners">Partner With Us</a>
         <a href="https://amplivibeai.substack.com/" target="_blank" data-cta="vibeai_mobile_nav_substack">Read on Substack</a>
     </nav>
@@ -383,6 +490,91 @@
                     <h4>Tutorials</h4>
                     <p>Practical guides and real-world examples to level up your AI skills.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Cover Section -->
+    <section class="section sources-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Sources</span>
+                <h2>What We Cover</h2>
+                <p>Stay up to date with the latest from leading AI companies and platforms.</p>
+            </div>
+        </div>
+
+        <div class="sources-carousel reveal">
+            <div class="sources-track">
+                <!-- First set of logos -->
+                <a href="https://cursor.com" target="_blank" rel="noopener" class="source-logo" aria-label="Cursor">
+                    <img src="../images/sources/cursor.svg" alt="Cursor logo">
+                </a>
+                <a href="https://anthropic.com" target="_blank" rel="noopener" class="source-logo" aria-label="Anthropic Claude">
+                    <img src="../images/sources/anthropic.svg" alt="Anthropic Claude logo">
+                </a>
+                <a href="https://openai.com" target="_blank" rel="noopener" class="source-logo" aria-label="OpenAI">
+                    <img src="../images/sources/openai.svg" alt="OpenAI logo">
+                </a>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="source-logo" aria-label="Google Gemini">
+                    <img src="../images/sources/gemini.svg" alt="Google Gemini logo">
+                </a>
+                <a href="https://deepseek.com" target="_blank" rel="noopener" class="source-logo" aria-label="DeepSeek">
+                    <img src="../images/sources/deepseek.svg" alt="DeepSeek logo">
+                </a>
+                <a href="https://perplexity.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Perplexity">
+                    <img src="../images/sources/perplexity.svg" alt="Perplexity logo">
+                </a>
+                <a href="https://mistral.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Mistral AI">
+                    <img src="../images/sources/mistral.svg" alt="Mistral AI logo">
+                </a>
+                <a href="https://ai.meta.com" target="_blank" rel="noopener" class="source-logo" aria-label="Meta AI">
+                    <img src="../images/sources/meta.svg" alt="Meta AI logo">
+                </a>
+                <a href="https://cohere.com" target="_blank" rel="noopener" class="source-logo" aria-label="Cohere">
+                    <img src="../images/sources/cohere.svg" alt="Cohere logo">
+                </a>
+                <a href="https://stability.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Stability AI">
+                    <img src="../images/sources/stabilityai.svg" alt="Stability AI logo">
+                </a>
+                <a href="https://huggingface.co" target="_blank" rel="noopener" class="source-logo" aria-label="Hugging Face">
+                    <img src="../images/sources/huggingface.svg" alt="Hugging Face logo">
+                </a>
+
+                <!-- Duplicate set for seamless loop -->
+                <a href="https://cursor.com" target="_blank" rel="noopener" class="source-logo" aria-label="Cursor">
+                    <img src="../images/sources/cursor.svg" alt="Cursor logo">
+                </a>
+                <a href="https://anthropic.com" target="_blank" rel="noopener" class="source-logo" aria-label="Anthropic Claude">
+                    <img src="../images/sources/anthropic.svg" alt="Anthropic Claude logo">
+                </a>
+                <a href="https://openai.com" target="_blank" rel="noopener" class="source-logo" aria-label="OpenAI">
+                    <img src="../images/sources/openai.svg" alt="OpenAI logo">
+                </a>
+                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="source-logo" aria-label="Google Gemini">
+                    <img src="../images/sources/gemini.svg" alt="Google Gemini logo">
+                </a>
+                <a href="https://deepseek.com" target="_blank" rel="noopener" class="source-logo" aria-label="DeepSeek">
+                    <img src="../images/sources/deepseek.svg" alt="DeepSeek logo">
+                </a>
+                <a href="https://perplexity.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Perplexity">
+                    <img src="../images/sources/perplexity.svg" alt="Perplexity logo">
+                </a>
+                <a href="https://mistral.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Mistral AI">
+                    <img src="../images/sources/mistral.svg" alt="Mistral AI logo">
+                </a>
+                <a href="https://ai.meta.com" target="_blank" rel="noopener" class="source-logo" aria-label="Meta AI">
+                    <img src="../images/sources/meta.svg" alt="Meta AI logo">
+                </a>
+                <a href="https://cohere.com" target="_blank" rel="noopener" class="source-logo" aria-label="Cohere">
+                    <img src="../images/sources/cohere.svg" alt="Cohere logo">
+                </a>
+                <a href="https://stability.ai" target="_blank" rel="noopener" class="source-logo" aria-label="Stability AI">
+                    <img src="../images/sources/stabilityai.svg" alt="Stability AI logo">
+                </a>
+                <a href="https://huggingface.co" target="_blank" rel="noopener" class="source-logo" aria-label="Hugging Face">
+                    <img src="../images/sources/huggingface.svg" alt="Hugging Face logo">
+                </a>
             </div>
         </div>
     </section>
@@ -526,14 +718,14 @@
             <div class="footer-bottom">
                 <p class="footer-copyright">© 2025 Ampli. All rights reserved.</p>
                 <div class="footer-social">
-                    <a href="https://x.com/amplixyz" target="_blank" aria-label="Twitter" data-cta="vibeai_footer_social_x">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
                     <a href="https://www.linkedin.com/company/ampli-community" target="_blank" aria-label="LinkedIn" data-cta="vibeai_footer_social_linkedin">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/amplixyz" target="_blank" aria-label="Twitter" data-cta="vibeai_footer_social_x">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
                     <a href="https://chat.whatsapp.com/LSuRQkUtsmc2zeGG1vhmo4" target="_blank" aria-label="WhatsApp Community" data-cta="vibeai_footer_social_whatsapp">
