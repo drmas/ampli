@@ -126,6 +126,7 @@
                         </a>
                     </div>
                 </div>
+                <a href="/guests/" class="nav-link" data-cta="nav_guests">Guests</a>
                 <a href="#subscribe" class="nav-link" data-cta="nav_subscribe">Subscribe</a>
                 <a href="/partners/" class="nav-link" data-cta="nav_partners">Partner With Us</a>
                 <a href="https://ampli.substack.com" target="_blank" class="btn btn-secondary btn-sm" data-cta="nav_substack">Read on Substack</a>
@@ -144,6 +145,7 @@
         <a href="/berlin/" data-cta="mobile_nav_berlin">Ampli Berlin</a>
         <a href="/vibe-ai/" data-cta="mobile_nav_vibe_ai">Ampli Vibe AI</a>
         <a href="/about/team/" data-cta="mobile_nav_team">Team</a>
+        <a href="/guests/" data-cta="mobile_nav_guests">Guests</a>
         <a href="#subscribe" data-cta="mobile_nav_subscribe">Subscribe</a>
         <a href="/partners/" data-cta="mobile_nav_partners">Partner With Us</a>
         <a href="https://ampli.substack.com" target="_blank" data-cta="mobile_nav_substack">Read on Substack</a>
@@ -323,6 +325,13 @@
     <!-- Moments from Our Meetups -->
     <section class="section events-gallery">
         <div class="container" id="home-event-gallery">
+            <!-- Component will render here -->
+        </div>
+    </section>
+
+    <!-- Featured Guests Section -->
+    <section class="section guests-section">
+        <div class="container" id="home-featured-guests">
             <!-- Component will render here -->
         </div>
     </section>
@@ -524,6 +533,7 @@
     <script src="js/config.js"></script>
     <script src="js/components/companyLogos.js"></script>
     <script src="js/components/eventGallery.js"></script>
+    <script src="js/components/guestCards.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             Ampli.renderCompanyLogos('home-company-logos', {
@@ -531,6 +541,11 @@
             });
             Ampli.renderEventGallery('home-event-gallery', {
                 basePath: ''
+            });
+            Ampli.renderFeaturedGuests('home-featured-guests', {
+                basePath: '',
+                limit: 6,
+                showViewAll: true
             });
         });
     </script>

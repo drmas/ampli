@@ -1,0 +1,137 @@
+{
+  "guests": [
+    {
+      "id": "ebrahim-kargar",
+      "name": "Ebrahim Kargar",
+      "title": "Staff Product Manager, AI/ML",
+      "company": "HelloFresh",
+      "headshot": "/images/guests/ebrahim-kargar.png",
+      "linkedinUrl": "https://www.linkedin.com/in/ebrahimkargar/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "amr-basha",
+      "name": "Amr Basha",
+      "title": "Head of Product",
+      "company": "Urban Sports Club",
+      "headshot": "/images/guests/amr-basha.png",
+      "linkedinUrl": "https://www.linkedin.com/in/amrbasha/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "mathieu-ritter",
+      "name": "Mathieu Ritter",
+      "title": "Founder / Recruitment Expert",
+      "company": "Undiscovered",
+      "headshot": "/images/guests/mathieu-ritter.png",
+      "linkedinUrl": "https://www.linkedin.com/in/mathieuritter/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "lucija-sicenica",
+      "name": "Lucija Sicenica",
+      "title": "Senior Product Researcher",
+      "company": "Conrad Electronic Group",
+      "headshot": "/images/guests/lucija-sicenica.png",
+      "linkedinUrl": "https://www.linkedin.com/in/lucija-sicenica/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "behrad-mirafshar",
+      "name": "Behrad Mirafshar",
+      "title": "Digital Transformation (Product Launches)",
+      "company": "Bonanza Studios",
+      "headshot": "/images/guests/behrad-mirafshar.png",
+      "linkedinUrl": "https://www.linkedin.com/in/behradmirafshar/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "lena-kul",
+      "name": "Lena Kul",
+      "title": "Founder | Recruitment & Job Search Advisor",
+      "company": "ku:l",
+      "headshot": "/images/guests/lena-kul.png",
+      "linkedinUrl": "https://www.linkedin.com/in/lena-kul/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "damian-martone",
+      "name": "Damian Martone",
+      "title": "Founder",
+      "company": "Hatch Conference",
+      "headshot": "/images/guests/damian-martone.png",
+      "linkedinUrl": "https://www.linkedin.com/in/damianmartone/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "antonia-landi",
+      "name": "Antonia Landi",
+      "title": "Senior Product Operations Coach & Consultant",
+      "company": "",
+      "headshot": "/images/guests/antonia-landi.png",
+      "linkedinUrl": "https://www.linkedin.com/in/landiantonia/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "nick-stuebe",
+      "name": "Nick Stübe",
+      "title": "President & Managing Director",
+      "company": "Berlin Design e.V.",
+      "headshot": "/images/guests/nick-stuebe.png",
+      "linkedinUrl": "https://www.linkedin.com/in/nickstuebe/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "aswin-ranganathan",
+      "name": "Aswin Ranganathan",
+      "title": "Design Manager",
+      "company": "Delivery Hero",
+      "headshot": "/images/guests/aswin-ranganathan.png",
+      "linkedinUrl": "https://www.linkedin.com/in/aswinckr/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "ahmed-wafaey",
+      "name": "Ahmed Wafaey",
+      "title": "Sr. Director of Product, Quick Commerce Growth",
+      "company": "Delivery Hero",
+      "headshot": "/images/guests/ahmed-wafaey.png",
+      "linkedinUrl": "https://www.linkedin.com/in/awafaey/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    },
+    {
+      "id": "thomas-malval",
+      "name": "Thomas Malval",
+      "title": "Senior iOS Developer",
+      "company": "SumUp",
+      "headshot": "/images/guests/thomas-malval.png",
+      "linkedinUrl": "https://www.linkedin.com/in/thomas-malval/",
+      "contentUrl": "",
+      "format": "",
+      "featured": true
+    }
+  ],
+  "becomeGuestUrl": "mailto:amplitechcom@gmail.com?subject=Guest%20Inquiry"
+}

@@ -2622,3 +2622,559 @@ p {
         animation: none;
     }
 }
+
+/* ============================================
+   FEATURED GUESTS SECTION
+   ============================================ */
+
+.guests-section {
+    background: linear-gradient(180deg,
+        var(--bg-primary) 0%,
+        var(--bg-secondary) 50%,
+        var(--bg-primary) 100%
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambient background effects */
+.guests-section::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--channel-glow) 0%, transparent 70%);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.guests-section::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 145, 110, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Guest Cards Grid */
+.guests-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-lg);
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 640px) {
+    .guests-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+@media (min-width: 1024px) {
+    .guests-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Guest Card - Broadcast Signal Aesthetic */
+.guest-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    background: linear-gradient(145deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scanline overlay effect */
+.guest-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+/* Gradient glow overlay */
+.guest-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        var(--channel-glow) 0%,
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.guest-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--channel-primary);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px var(--channel-glow);
+}
+
+.guest-card:hover::before {
+    opacity: 0.5;
+}
+
+.guest-card:hover::after {
+    opacity: 0.1;
+}
+
+/* Guest Avatar - Signal Ring Effect */
+.guest-avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: var(--space-lg);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Animated ring around avatar */
+.guest-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+        var(--channel-primary) 0%,
+        var(--brand-green) 50%,
+        var(--channel-primary) 100%
+    );
+    opacity: 0.6;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.guest-card:hover .guest-avatar::before {
+    inset: -6px;
+    opacity: 1;
+    animation: avatar-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes avatar-ring-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--channel-glow);
+    }
+    50% {
+        box-shadow: 0 0 35px var(--channel-glow);
+    }
+}
+
+/* Avatar image container */
+.guest-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    overflow: hidden;
+    position: relative;
+}
+
+.guest-avatar-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.guest-card:hover .guest-avatar-inner img {
+    transform: scale(1.08);
+}
+
+/* Initials fallback */
+.guest-initials {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: linear-gradient(135deg,
+        var(--bg-tertiary) 0%,
+        rgba(127, 126, 255, 0.15) 100%
+    );
+}
+
+.guest-avatar-inner img[src=""],
+.guest-avatar-inner img:not([src]),
+.guest-avatar-inner img.error {
+    display: none;
+}
+
+.guest-avatar-inner img[src=""] + .guest-initials,
+.guest-avatar-inner img:not([src]) + .guest-initials,
+.guest-avatar-inner img.error + .guest-initials,
+.guest-avatar-inner:not(:has(img:not(.error))) .guest-initials {
+    display: flex;
+}
+
+/* Guest Info */
+.guest-info {
+    margin-bottom: var(--space-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.guest-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+    line-height: 1.3;
+}
+
+.guest-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Guest Links */
+.guest-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    position: relative;
+    z-index: 1;
+}
+
+/* LinkedIn icon button */
+.guest-linkedin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.guest-linkedin:hover {
+    background: rgba(10, 102, 194, 0.15);
+    border-color: #0a66c2;
+    color: #0a66c2;
+    transform: translateY(-2px);
+}
+
+.guest-linkedin svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Content link button */
+.guest-content-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: linear-gradient(135deg,
+        rgba(127, 126, 255, 0.15) 0%,
+        rgba(0, 145, 110, 0.1) 100%
+    );
+    border: 1px solid rgba(127, 126, 255, 0.3);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--channel-primary);
+    transition: all 0.3s ease;
+}
+
+.guest-content-btn:hover {
+    background: linear-gradient(135deg,
+        rgba(127, 126, 255, 0.25) 0%,
+        rgba(0, 145, 110, 0.2) 100%
+    );
+    border-color: var(--channel-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--channel-glow);
+}
+
+.guest-content-btn svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+}
+
+.guest-content-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* Content format icons */
+.guest-content-btn[data-format="video"]::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid currentColor;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    margin-right: var(--space-xs);
+}
+
+.guest-content-btn[data-format="podcast"]::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%237F7EFF' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z'/%3E%3Cpath d='M19 10v2a7 7 0 0 1-14 0v-2'/%3E%3Cline x1='12' y1='19' x2='12' y2='23'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    margin-right: var(--space-xs);
+}
+
+/* View All Guests CTA */
+.guests-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-3xl);
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   GUESTS PAGE SPECIFIC STYLES
+   ============================================ */
+
+.guests-page-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--header-height) + var(--space-3xl));
+    padding-bottom: var(--space-3xl);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0b0d18 0%, var(--bg-secondary) 100%);
+}
+
+.guests-page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 40%, var(--channel-glow) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(0, 145, 110, 0.2) 0%, transparent 50%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Signal rings decoration for guests page */
+.guests-hero-rings {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 300px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .guests-hero-rings {
+        display: none;
+    }
+}
+
+.guests-hero-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--channel-primary);
+    border-radius: 50%;
+    animation: guest-ring-expand 4s ease-out infinite;
+}
+
+.guests-hero-ring:nth-child(1) { animation-delay: 0s; }
+.guests-hero-ring:nth-child(2) { animation-delay: 1s; }
+.guests-hero-ring:nth-child(3) { animation-delay: 2s; }
+
+@keyframes guest-ring-expand {
+    0% {
+        transform: scale(0.3);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Guests page stats */
+.guests-stats {
+    display: flex;
+    gap: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+@media (max-width: 640px) {
+    .guests-stats {
+        gap: var(--space-lg);
+        flex-wrap: wrap;
+    }
+}
+
+.guests-stat-value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    background: linear-gradient(135deg, var(--channel-primary), var(--brand-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.guests-stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Full grid for guests page (4 columns on desktop) */
+.guests-grid-full {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: var(--space-lg);
+}
+
+@media (min-width: 640px) {
+    .guests-grid-full {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
+    }
+}
+
+@media (min-width: 900px) {
+    .guests-grid-full {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .guests-grid-full {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Become a Guest CTA Section */
+.become-guest-cta {
+    background: linear-gradient(135deg,
+        rgba(127, 126, 255, 0.1) 0%,
+        rgba(0, 145, 110, 0.05) 100%
+    );
+    border: 1px solid rgba(127, 126, 255, 0.2);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.become-guest-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        var(--channel-glow) 60deg,
+        transparent 120deg
+    );
+    animation: rotate-glow 8s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes rotate-glow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.become-guest-cta > * {
+    position: relative;
+    z-index: 1;
+}
+
+.become-guest-cta h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-md);
+}
+
+.become-guest-cta p {
+    max-width: 500px;
+    margin: 0 auto var(--space-xl);
+}
+
+/* Staggered reveal animation for guest cards */
+.guests-grid .guest-card.reveal {
+    transition-delay: calc(var(--card-index, 0) * 0.1s);
+}
+
+/* Accessibility - Focus states */
+.guest-card:focus-within {
+    outline: 2px solid var(--channel-primary);
+    outline-offset: 4px;
+}
+
+.guest-linkedin:focus,
+.guest-content-btn:focus {
+    outline: 2px solid var(--channel-primary);
+    outline-offset: 2px;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .guest-card,
+    .guest-avatar::before,
+    .guest-avatar-inner img,
+    .guest-linkedin,
+    .guest-content-btn,
+    .guests-hero-ring {
+        animation: none;
+        transition: none;
+    }
+
+    .guest-card:hover {
+        transform: none;
+    }
+}
