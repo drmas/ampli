@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en" data-channel="workshop">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Collaboration Brief — Ampli</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Private briefing document for Ampli workshop speakers and hosts.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/ampli-logo.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Workshop Channel Theme */
+        :root {
+            --workshop-primary: #00C9A7;
+            --workshop-secondary: #00A389;
+            --workshop-glow: rgba(0, 201, 167, 0.35);
+            --workshop-dark: rgba(0, 201, 167, 0.08);
+        }
+
+        [data-channel="workshop"] {
+            --channel-primary: var(--workshop-primary);
+            --channel-secondary: var(--workshop-secondary);
+            --channel-glow: var(--workshop-glow);
+        }
+
+        /* ============================================
+           WORKSHOP HERO - BRIEFING AESTHETIC
+           ============================================ */
+        .workshop-hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-3xl);
+            overflow: hidden;
+        }
+
+        .workshop-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, var(--workshop-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 201, 167, 0.15) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        /* Grid pattern background */
+        .briefing-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 201, 167, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 201, 167, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        /* Scanline effect */
+        .briefing-scanlines {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                rgba(0, 201, 167, 0.015) 1px,
+                transparent 2px,
+                transparent 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .workshop-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .workshop-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--space-md);
+            letter-spacing: -0.03em;
+        }
+
+        .workshop-hero h1 span {
+            color: var(--workshop-primary);
+        }
+
+        .workshop-hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Bottom accent line */
+        .hero-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--workshop-primary) 50%, transparent 100%);
+        }
+
+        /* ============================================
+           TIMELINE SECTION
+           ============================================ */
+        .timeline-section {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--workshop-primary), transparent);
+            opacity: 0.3;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-time {
+            flex-shrink: 0;
+            width: 100px;
+            text-align: right;
+            padding-top: var(--space-sm);
+        }
+
+        .timeline-time-value {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--workshop-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-time-duration {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: var(--space-xs);
+        }
+
+        .timeline-node {
+            position: relative;
+            flex-shrink: 0;
+            width: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--bg-primary);
+            border: 3px solid var(--workshop-primary);
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 15px var(--workshop-glow);
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: var(--workshop-primary);
+            border-radius: 50%;
+        }
+
+        .timeline-line {
+            width: 2px;
+            flex: 1;
+            background: linear-gradient(to bottom, var(--workshop-primary), rgba(0, 201, 167, 0.2));
+            margin-top: var(--space-sm);
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--workshop-primary);
+            box-shadow: 0 0 20px var(--workshop-glow);
+            transform: translateX(4px);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .timeline-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.25rem 0.5rem;
+            background: var(--workshop-dark);
+            border-radius: var(--radius-sm);
+            color: var(--workshop-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Mobile timeline adjustments */
+        @media (max-width: 640px) {
+            .timeline-item {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .timeline-time {
+                width: auto;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: var(--space-md);
+            }
+
+            .timeline-node {
+                display: none;
+            }
+
+            .timeline-section::before {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           CHECKLIST CARDS
+           ============================================ */
+        .checklist-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .checklist-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .checklist-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .checklist-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--workshop-primary), var(--workshop-secondary));
+        }
+
+        .checklist-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .checklist-card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-dark);
+            border: 1px solid rgba(0, 201, 167, 0.3);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+        }
+
+        .checklist-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .checklist-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+        }
+
+        .checklist-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .checklist-checkbox {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--border-color-hover);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        .checklist-item:hover .checklist-checkbox {
+            border-color: var(--workshop-primary);
+        }
+
+        .checklist-text {
+            flex: 1;
+        }
+
+        .checklist-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .checklist-text span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           INFO CARDS GRID
+           ============================================ */
+        .info-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 640px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            transition: all var(--transition-base);
+        }
+
+        .info-card:hover {
+            border-color: var(--workshop-primary);
+            transform: translateY(-2px);
+        }
+
+        .info-card-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-dark);
+            border-radius: var(--radius-md);
+            font-size: 1.25rem;
+        }
+
+        .info-card-content h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .info-card-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .info-card-content .placeholder {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: var(--workshop-primary);
+            background: var(--workshop-dark);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-top: var(--space-sm);
+        }
+
+        /* ============================================
+           POST-EVENT SECTION
+           ============================================ */
+        .post-event-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .post-event-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .post-event-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
+        }
+
+        .post-event-number {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-primary);
+            color: var(--bg-primary);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50%;
+        }
+
+        .post-event-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .post-event-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ============================================
+           AGREEMENT SECTION
+           ============================================ */
+        .agreement-section {
+            background: var(--bg-secondary);
+        }
+
+        .agreement-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agreement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--workshop-primary), var(--workshop-secondary));
+        }
+
+        .agreement-list {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .agreement-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .agreement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .agreement-icon {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-dark);
+            border-radius: 50%;
+            color: var(--workshop-primary);
+            font-size: 1rem;
+        }
+
+        .agreement-item h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .agreement-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ============================================
+           FAQ ACCORDION
+           ============================================ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-color-hover);
+        }
+
+        .faq-item.active {
+            border-color: var(--workshop-primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: var(--workshop-primary);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            transition: all var(--transition-base);
+        }
+
+        .faq-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--text-secondary);
+            transition: transform var(--transition-base);
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--workshop-primary);
+        }
+
+        .faq-item.active .faq-icon svg {
+            stroke: var(--bg-primary);
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            padding: 0 var(--space-lg) var(--space-lg);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           SUPPORT TEAM SECTION
+           (Matches /about/team/index.html exactly)
+           ============================================ */
+        .team-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 640px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-base);
+            min-height: 100%;
+        }
+
+        .team-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-color-hover);
+            transform: translateY(-4px);
+        }
+
+        .team-card-avatar {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-lg);
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--signal-cyan), var(--signal-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bg-primary);
+            border: 4px solid var(--bg-secondary);
+            overflow: hidden;
+        }
+
+        .team-card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+        }
+
+        .team-card-role {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .team-card-bio {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: var(--space-lg);
+            flex-grow: 1;
+        }
+
+        .team-card-social {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .team-card-social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+        }
+
+        .team-card-social a:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--signal-cyan);
+            color: var(--signal-cyan);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 639px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-card {
+                padding: var(--space-lg);
+            }
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Print styles for PDF */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+
+            .workshop-hero {
+                min-height: auto;
+                padding: var(--space-xl) 0;
+            }
+
+            .section {
+                padding: var(--space-xl) 0;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (simplified for private page) -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C50 10, 50 50, 50 50 L10 50 C10 50, 10 30, 30 15 C40 8, 50 10, 50 10" fill="#FFC53E"/>
+                        <path d="M50 10 C50 10, 60 8, 70 15 C90 30, 90 50, 90 50 L50 50 L50 10" fill="#00916E"/>
+                        <path d="M10 50 L50 50 L50 90 C30 90, 10 70, 10 50" fill="#f5f5f0"/>
+                        <path d="M50 50 L90 50 C90 70, 70 90, 50 90 L50 50" fill="#1a1a1a"/>
+                    </svg>
+                </div>
+                Ampli
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="/" class="nav-link">Back to Home</a>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile">
+        <a href="/">Back to Home</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="workshop-hero">
+        <div class="briefing-grid"></div>
+        <div class="briefing-scanlines"></div>
+
+        <div class="container">
+            <div class="workshop-hero-content">
+                <h1>Workshop <span>Collaboration</span> Brief</h1>
+
+                <p class="workshop-hero-subtitle">
+                    Everything you need to know for your upcoming workshop with Ampli. This document contains the event timeline, requirements, and logistics.
+                </p>
+            </div>
+        </div>
+
+        <div class="hero-line"></div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="section timeline-section" id="timeline">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Event Schedule</span>
+                <h2>Workshop Timeline</h2>
+                <p>A detailed breakdown of the evening's activities. Please arrive by 6:30 PM for setup.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">7:00 PM</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Arrival</span>
+                        <h4>Doors Open</h4>
+                        <p>Attendees begin arriving. Time for informal networking and settling in.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">7:10 PM</div>
+                        <div class="timeline-time-duration">10 mins</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Opening</span>
+                        <h4>Ampli Introduction</h4>
+                        <p>Brief welcome and introduction to Ampli, tonight's format, and community announcements.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">7:20 PM</div>
+                        <div class="timeline-time-duration">20 mins</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Presentation</span>
+                        <h4>Speaker Presentation</h4>
+                        <p>Your time to introduce the topic, share context, and set the stage for the hands-on session.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">7:40 PM</div>
+                        <div class="timeline-time-duration">30 mins</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Hands-on</span>
+                        <h4>Workshop Session 1</h4>
+                        <p>First hands-on coding/building session. Attendees follow along and work through exercises.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">8:10 PM</div>
+                        <div class="timeline-time-duration">10 mins</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Break</span>
+                        <h4>Short Break</h4>
+                        <p>Quick break for refreshments, questions, and catching up if anyone fell behind.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">8:20 PM</div>
+                        <div class="timeline-time-duration">30 mins</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Hands-on</span>
+                        <h4>Workshop Session 2</h4>
+                        <p>Continue building, tackle advanced challenges, and wrap up the main workshop content.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-time">
+                        <div class="timeline-time-value">8:50 PM</div>
+                        <div class="timeline-time-duration">Until 10 PM</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <span class="timeline-tag">Networking</span>
+                        <h4>Mingle & Networking</h4>
+                        <p>Open networking time. Great opportunity to connect with attendees and answer remaining questions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Previous Workshops Gallery -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div id="workshop-gallery"></div>
+        </div>
+    </section>
+
+    <!-- Speaker Preparation Section -->
+    <section class="section" id="requirements">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">What We Need From You</span>
+                <h2>Speaker Preparation</h2>
+                <p>Please prepare the following materials before the workshop date, including requirements for attendees.</p>
+            </div>
+
+            <div class="checklist-grid">
+                <div class="checklist-card reveal">
+                    <div class="checklist-card-header">
+                        <div class="checklist-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/>
+                            </svg>
+                        </div>
+                        <h3 class="checklist-card-title">Profile Information</h3>
+                    </div>
+
+                    <div class="checklist-items">
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Full Name</strong>
+                                <span>As you'd like it displayed on event materials</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Professional Headshot</strong>
+                                <span>High resolution, minimum 400x400px, professional quality</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Job Title & Company</strong>
+                                <span>Current role and organization</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Short Bio</strong>
+                                <span>50-100 words about your background and expertise</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>LinkedIn Profile URL</strong>
+                                <span>For attendees who want to connect</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Twitter/X Handle</strong>
+                                <span>Optional — for social media promotion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checklist-card reveal">
+                    <div class="checklist-card-header">
+                        <div class="checklist-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                                <path d="M7 8h10M7 12h6"/>
+                            </svg>
+                        </div>
+                        <h3 class="checklist-card-title">Workshop Content</h3>
+                    </div>
+
+                    <div class="checklist-items">
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Workshop Title</strong>
+                                <span>Clear, engaging title that describes the session</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Workshop Description</strong>
+                                <span>150-200 words explaining what attendees will learn and build</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Key Learning Outcomes</strong>
+                                <span>3-5 bullet points of what attendees will take away</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Target Audience</strong>
+                                <span>Who is this workshop best suited for? Skill level, background</span>
+                            </div>
+                        </div>
+
+                        <div class="checklist-item">
+                            <div class="checklist-checkbox"></div>
+                            <div class="checklist-text">
+                                <strong>Attendee Technical Requirements</strong>
+                                <span>Laptop specs, software to install, accounts to create, files to download, prior knowledge expected</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post-Event Section -->
+    <section class="section" id="post-event" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">After the Workshop</span>
+                <h2>Post-Event</h2>
+                <p>What happens after the workshop concludes.</p>
+            </div>
+
+            <div class="post-event-grid">
+                <div class="post-event-card reveal">
+                    <div class="post-event-number">1</div>
+                    <div class="post-event-content">
+                        <h4>Community Chat</h4>
+                        <p>We'll share a WhatsApp or Telegram group link with all attendees so you can stay connected and answer follow-up questions.</p>
+                    </div>
+                </div>
+
+                <div class="post-event-card reveal">
+                    <div class="post-event-number">2</div>
+                    <div class="post-event-content">
+                        <h4>Recording Policy</h4>
+                        <p>The workshop may be recorded for our community. Please let us know if you prefer not to be recorded.</p>
+                    </div>
+                </div>
+
+                <div class="post-event-card reveal">
+                    <div class="post-event-number">3</div>
+                    <div class="post-event-content">
+                        <h4>Slide Sharing</h4>
+                        <p>We'd love to share your slides or materials with attendees afterwards. Please provide a link or shareable version.</p>
+                    </div>
+                </div>
+
+                <div class="post-event-card reveal">
+                    <div class="post-event-number">4</div>
+                    <div class="post-event-content">
+                        <h4>Follow-up Content</h4>
+                        <p>We may feature your workshop in our newsletter and social media. Great opportunity for additional exposure!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaker Agreement Section -->
+    <section class="section agreement-section" id="agreement">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Key Terms</span>
+                <h2>Speaker Agreement Highlights</h2>
+                <p>A quick overview of our collaboration terms.</p>
+            </div>
+
+            <div class="agreement-card reveal">
+                <div class="agreement-list">
+                    <div class="agreement-item">
+                        <div class="agreement-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Content Ownership</h4>
+                            <p>You retain full ownership of your content. We only ask for permission to share recordings and materials with attendees.</p>
+                        </div>
+                    </div>
+
+                    <div class="agreement-item">
+                        <div class="agreement-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Promotion Consent</h4>
+                            <p>We'll promote the event using your provided materials. You're welcome to share on your channels too!</p>
+                        </div>
+                    </div>
+
+                    <div class="agreement-item">
+                        <div class="agreement-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Code of Conduct</h4>
+                            <p>We maintain a welcoming, inclusive environment. All participants agree to respectful, professional conduct.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Common Questions</span>
+                <h2>FAQ</h2>
+                <p>Answers to frequently asked questions from speakers.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        What time should I arrive at the venue?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We recommend arriving 30 minutes before doors open (6:30 PM) to set up your equipment, test the AV setup, and get comfortable with the space. This also gives you time to chat with the Ampli team about any last-minute details.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Will there be someone to help with technical setup?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! An Ampli team member will be on-site to assist with projector connections, microphone setup, and any technical issues. We'll also do a quick run-through before attendees arrive to make sure everything works smoothly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        What format should my slides be in?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Any format works—Google Slides, PowerPoint, Keynote, PDF, or even a web-based presentation. We recommend having a backup copy accessible online in case of laptop issues. The projector supports 16:9 and 4:3 aspect ratios.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Can I bring a co-presenter or assistant?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Absolutely! If you'd like to bring a co-presenter or someone to help assist attendees during hands-on portions, just let us know in advance so we can add them to the event and prepare appropriately.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        What if attendees have different skill levels?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We communicate the prerequisites clearly in the event description, but some variation is normal. We recommend having bonus challenges for faster participants and clearly defined checkpoints so slower participants can catch up during breaks.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Team Section -->
+    <section class="section" id="team" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Who's Got Your Back</span>
+                <h2>Meet Your Support Team</h2>
+                <p>The Ampli team members who will be supporting you at the event.</p>
+            </div>
+
+            <div class="team-grid" id="support-team-cards">
+                <!-- Team cards rendered via component -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (loaded via component) -->
+    <div id="footer"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <script src="../js/components/eventGallery.js"></script>
+    <script src="../js/data/team.js"></script>
+    <script src="../js/components/teamCards.js"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render footer
+            if (window.Ampli?.renderFooter) {
+                window.Ampli.renderFooter('footer', { basePath: '../' });
+            }
+
+            // Render workshop gallery
+            if (window.Ampli?.renderEventGallery) {
+                window.Ampli.renderEventGallery('workshop-gallery', {
+                    title: 'Previous Workshops',
+                    subtitle: 'Past Events',
+                    description: 'Get a glimpse of our previous workshop sessions and the community atmosphere.',
+                    basePath: '../',
+                    showCta: false,
+                    events: [
+                        { image: 'images/workshops/workshop-1.jpg', alt: 'Workshop session with attendees', featured: true },
+                        { image: 'images/workshops/workshop-2.jpg', alt: 'Hands-on coding session', featured: false },
+                        { image: 'images/workshops/workshop-3.jpg', alt: 'Speaker presenting to audience', featured: false },
+                        { image: 'images/workshops/workshop-4.jpg', alt: 'Networking after workshop', featured: false },
+                        { image: 'images/workshops/workshop-5.jpg', alt: 'Collaborative learning environment', featured: false }
+                    ]
+                });
+            }
+
+            // Render support team cards
+            if (window.Ampli?.renderTeamCards) {
+                window.Ampli.renderTeamCards('support-team-cards', { basePath: '../' });
+            }
+
+            // Initialize scroll reveal
+            if (window.Ampli?.initScrollReveal) {
+                window.Ampli.initScrollReveal();
+            } else {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }
+        });
+    </script>
+</body>
+</html>
