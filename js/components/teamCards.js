@@ -30,7 +30,6 @@
           <img src="${prefix}${member.image}" alt="${member.name}" onerror="this.style.display='none'; this.parentElement.textContent='${member.initial}';">
         </div>
         <div class="team-card-name">${member.name}</div>
-        <div class="team-card-role">${member.handle}</div>
         <div class="team-card-bio">${member.bio}</div>
         <div class="team-card-social">
           <a href="${member.linkedin}" target="_blank" aria-label="LinkedIn">
