@@ -820,6 +820,262 @@
                 break-inside: avoid;
             }
         }
+
+        /* ============================================
+           WORKSHOP GUIDELINES SECTION
+           ============================================ */
+        .guidelines-section {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guidelines-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(0, 201, 167, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 201, 167, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .guidelines-intro {
+            max-width: 700px;
+            margin: 0 auto var(--space-2xl);
+            text-align: center;
+        }
+
+        .guidelines-intro-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--workshop-dark);
+            border: 1px solid rgba(0, 201, 167, 0.3);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: var(--workshop-primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .guidelines-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .guidelines-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Guideline Panel Card */
+        .guideline-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .guideline-panel:hover {
+            border-color: var(--border-color-hover);
+        }
+
+        .guideline-panel.active {
+            border-color: var(--workshop-primary);
+            box-shadow: 0 0 30px var(--workshop-glow);
+        }
+
+        .guideline-panel-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .guideline-panel-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--workshop-primary), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .guideline-panel.active .guideline-panel-header::before {
+            opacity: 1;
+        }
+
+        .guideline-panel-header:hover {
+            background: var(--bg-secondary);
+        }
+
+        .guideline-panel-emoji {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-dark);
+            border: 1px solid rgba(0, 201, 167, 0.2);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: all var(--transition-base);
+        }
+
+        .guideline-panel.active .guideline-panel-emoji {
+            background: var(--workshop-primary);
+            border-color: var(--workshop-primary);
+            box-shadow: 0 0 20px var(--workshop-glow);
+        }
+
+        .guideline-panel-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .guideline-panel-title {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .guideline-panel-subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .guideline-panel-toggle {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all var(--transition-base);
+        }
+
+        .guideline-panel-toggle svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--text-secondary);
+            transition: transform var(--transition-base);
+        }
+
+        .guideline-panel.active .guideline-panel-toggle {
+            background: var(--workshop-primary);
+        }
+
+        .guideline-panel.active .guideline-panel-toggle svg {
+            stroke: var(--bg-primary);
+            transform: rotate(180deg);
+        }
+
+        /* Guideline Content */
+        .guideline-panel-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+        }
+
+        .guideline-panel.active .guideline-panel-content {
+            max-height: 1000px;
+        }
+
+        .guideline-panel-inner {
+            padding: 0 var(--space-lg) var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        /* Individual Guideline Item */
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            border-left: 3px solid transparent;
+            transition: all var(--transition-fast);
+        }
+
+        .guideline-item:hover {
+            background: var(--bg-tertiary);
+            border-left-color: var(--workshop-primary);
+            transform: translateX(4px);
+        }
+
+        .guideline-item-icon {
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .guideline-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .guideline-item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .guideline-item-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .guideline-item-desc code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            background: var(--workshop-dark);
+            color: var(--workshop-primary);
+            padding: 0.15rem 0.4rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Pro tip callout */
+        .guideline-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            background: rgba(0, 201, 167, 0.08);
+            border: 1px dashed rgba(0, 201, 167, 0.3);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-sm);
+        }
+
+        .guideline-tip-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .guideline-tip-text {
+            font-size: 0.85rem;
+            color: var(--workshop-primary);
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -871,6 +1127,205 @@
         </div>
 
         <div class="hero-line"></div>
+    </section>
+
+    <!-- Workshop Guidelines Section -->
+    <section class="section guidelines-section" id="guidelines">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Best Practices</span>
+                <h2>Workshop Guidelines</h2>
+                <p>Design your workshop for maximum impact. These guidelines help ensure attendees leave with real skills.</p>
+            </div>
+
+            <div class="guidelines-intro reveal">
+                <div class="guidelines-intro-badge">
+                    <span>💡</span>
+                    <span>Pro tip: Workshops ≠ Talks — design for doing, not just listening</span>
+                </div>
+            </div>
+
+            <div class="guidelines-grid">
+                <!-- General Philosophy Panel -->
+                <div class="guideline-panel reveal">
+                    <div class="guideline-panel-header" onclick="toggleGuidelinePanel(this)">
+                        <div class="guideline-panel-emoji">🎯</div>
+                        <div class="guideline-panel-info">
+                            <h3 class="guideline-panel-title">General Philosophy</h3>
+                            <p class="guideline-panel-subtitle">Core principles for effective workshops</p>
+                        </div>
+                        <div class="guideline-panel-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="guideline-panel-content">
+                        <div class="guideline-panel-inner">
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">⚡</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Workshop Format (Not a Talk)</div>
+                                    <div class="guideline-item-desc">Design for doing, not just listening. Target <code>45-50 mins</code> hands-on time with only <code>15-20 mins</code> of explanation/demo.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">✅</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Clear Learning Outcomes</div>
+                                    <div class="guideline-item-desc">Define 3–5 concrete outcomes. Phrase them as <code>"Participants will be able to…"</code></div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">👥</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Audience Assumptions</div>
+                                    <div class="guideline-item-desc">State required prior knowledge, tools, and setup. Include a clear "who this is for / not for" section.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Before the Workshop Panel -->
+                <div class="guideline-panel reveal">
+                    <div class="guideline-panel-header" onclick="toggleGuidelinePanel(this)">
+                        <div class="guideline-panel-emoji">🛠️</div>
+                        <div class="guideline-panel-info">
+                            <h3 class="guideline-panel-title">Before the Workshop</h3>
+                            <p class="guideline-panel-subtitle">Preparation and materials</p>
+                        </div>
+                        <div class="guideline-panel-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="guideline-panel-content">
+                        <div class="guideline-panel-inner">
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">📝</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Hands-On Structure</div>
+                                    <div class="guideline-item-desc">Break into small exercises with clear prompts. Each exercise needs: <code>goal → steps → expected output → timebox</code>. Keep segments <code>10–20 min</code>.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🏆</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Quality Bar for Content</div>
+                                    <div class="guideline-item-desc">Use real examples with realistic constraints. Provide a "good enough" baseline solution, plus optional stretch goals for fast learners.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">📦</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Materials & Pre-Work</div>
+                                    <div class="guideline-item-desc">Provide a checklist: links, repos, accounts, datasets, templates, installs. Include a <code>5-min sanity check</code> at start.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🆘</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Participant Support Plan</div>
+                                    <div class="guideline-item-desc">Define help mechanism: "raise hand", "help queue", "pair support", or "roaming helpers". Include common issues + quick fixes.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🏢</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Logistics & Room Setup</div>
+                                    <div class="guideline-item-desc">Specify any special setup requirements. Plan a break <code>30 mins</code> after workshop start.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- During the Workshop Panel -->
+                <div class="guideline-panel reveal">
+                    <div class="guideline-panel-header" onclick="toggleGuidelinePanel(this)">
+                        <div class="guideline-panel-emoji">🎬</div>
+                        <div class="guideline-panel-info">
+                            <h3 class="guideline-panel-title">During the Workshop</h3>
+                            <p class="guideline-panel-subtitle">Live execution best practices</p>
+                        </div>
+                        <div class="guideline-panel-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="guideline-panel-content">
+                        <div class="guideline-panel-inner">
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🖥️</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Live Demo Strategy</div>
+                                    <div class="guideline-item-desc">Demo only what's necessary, then switch quickly to participant execution. Have a fallback ready (recording, screenshots, prepared branch).</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🙋</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Interactivity Rules</div>
+                                    <div class="guideline-item-desc">Use frequent checkpoints: show-of-hands, <code>🟢/🟡/🔴</code> status checks. Encourage questions but timebox deep dives ("parking lot").</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🌍</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Inclusivity & Accessibility</div>
+                                    <div class="guideline-item-desc">Avoid jargon without explanation; define terms once. Offer alternatives where relevant (no-code option, Mac/Windows notes).</div>
+                                </div>
+                            </div>
+                            <div class="guideline-tip">
+                                <span class="guideline-tip-icon">💡</span>
+                                <span class="guideline-tip-text">When someone falls behind, pair them with someone ahead rather than slowing the whole group.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Closure Panel -->
+                <div class="guideline-panel reveal">
+                    <div class="guideline-panel-header" onclick="toggleGuidelinePanel(this)">
+                        <div class="guideline-panel-emoji">🎁</div>
+                        <div class="guideline-panel-info">
+                            <h3 class="guideline-panel-title">Closure</h3>
+                            <p class="guideline-panel-subtitle">Wrap-up and takeaways</p>
+                        </div>
+                        <div class="guideline-panel-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="guideline-panel-content">
+                        <div class="guideline-panel-inner">
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">📁</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Artifacts Participants Leave With</div>
+                                    <div class="guideline-item-desc">Ensure everyone leaves with something tangible: template, checklist, sample solution, rubric, repo, or take-home assignment.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-item">
+                                <span class="guideline-item-icon">🔗</span>
+                                <div class="guideline-item-content">
+                                    <div class="guideline-item-title">Closing & Follow-Up</div>
+                                    <div class="guideline-item-desc">End with recap of outcomes, next steps, and a resource pack. Provide a feedback link and optional office-hours/community channel.</div>
+                                </div>
+                            </div>
+                            <div class="guideline-tip">
+                                <span class="guideline-tip-icon">🎯</span>
+                                <span class="guideline-tip-text">The best workshops leave participants excited to continue learning on their own.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Timeline Section -->
@@ -1350,6 +1805,19 @@
     <script src="../js/data/team.js"></script>
     <script src="../js/components/teamCards.js"></script>
     <script>
+        // Guidelines Panel Accordion functionality
+        function toggleGuidelinePanel(header) {
+            const panel = header.parentElement;
+            const isActive = panel.classList.contains('active');
+
+            // Toggle current panel
+            if (isActive) {
+                panel.classList.remove('active');
+            } else {
+                panel.classList.add('active');
+            }
+        }
+
         // FAQ Accordion functionality
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
