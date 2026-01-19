@@ -1076,6 +1076,99 @@
             color: var(--workshop-primary);
             font-style: italic;
         }
+
+        /* ============================================
+           SPEAKER SUBMIT SECTION
+           ============================================ */
+        .speaker-submit-section {
+            margin-top: var(--space-2xl);
+            display: flex;
+            justify-content: center;
+        }
+
+        .speaker-submit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .speaker-submit-card:hover {
+            border-color: var(--workshop-primary);
+            box-shadow: 0 0 40px var(--workshop-glow);
+        }
+
+        .speaker-submit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--workshop-primary), var(--workshop-secondary));
+        }
+
+        .speaker-submit-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--workshop-dark);
+            border: 1px solid rgba(0, 201, 167, 0.3);
+            border-radius: 50%;
+            font-size: 1.75rem;
+        }
+
+        .speaker-submit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .speaker-submit-card p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .speaker-submit-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            background: linear-gradient(135deg, var(--workshop-primary), var(--workshop-secondary));
+            color: var(--bg-primary);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .speaker-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--workshop-glow);
+        }
+
+        .speaker-submit-btn svg {
+            width: 18px;
+            height: 18px;
+            transition: transform var(--transition-base);
+        }
+
+        .speaker-submit-btn:hover svg {
+            transform: translateX(3px);
+        }
     </style>
 </head>
 <body>
@@ -1582,6 +1675,24 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Speaker Submit CTA -->
+            <div class="speaker-submit-section reveal">
+                <div class="speaker-submit-card">
+                    <div class="speaker-submit-icon">🚀</div>
+                    <h3>Ready to Submit?</h3>
+                    <p>Once you've gathered all the information above, submit your details through our form.</p>
+                    <a href="https://attiamo.notion.site/2ed778eee1798124876cefa5fd3e4106"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="speaker-submit-btn">
+                        Submit Your Info
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
