@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en" data-channel="contributor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write For Us — Ampli Newsletter</title>
+    <meta name="description" content="Share your expertise with Berlin's tech community. Contribute to Ampli newsletter and reach 2.5K+ engineers and tech professionals.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/ampli-logo.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Write For Us — Ampli Newsletter">
+    <meta property="og:description" content="Share your expertise with Berlin's tech community. Contribute to Ampli newsletter.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ampli.xyz/write-for-us/">
+    <meta property="og:image" content="https://ampli.xyz/images/ampli-logo.png">
+
+    <style>
+        /* ============================================
+           CONTRIBUTOR CHANNEL THEME - WARM AMBER
+           ============================================ */
+        :root {
+            --contributor-primary: #F59E0B;
+            --contributor-secondary: #D97706;
+            --contributor-glow: rgba(245, 158, 11, 0.35);
+            --contributor-dark: rgba(245, 158, 11, 0.08);
+            --contributor-light: rgba(245, 158, 11, 0.15);
+        }
+
+        [data-channel="contributor"] {
+            --channel-primary: var(--contributor-primary);
+            --channel-secondary: var(--contributor-secondary);
+            --channel-glow: var(--contributor-glow);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .contributor-hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-4xl);
+            overflow: hidden;
+        }
+
+        .contributor-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, var(--contributor-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(245, 158, 11, 0.2) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 100%, rgba(217, 119, 6, 0.15) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        /* Warm grid pattern */
+        .contributor-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        /* Floating pen illustration */
+        .hero-pen {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%) rotate(-15deg);
+            width: 120px;
+            height: 300px;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        .hero-pen::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 250px;
+            background: linear-gradient(to bottom, var(--contributor-primary), var(--contributor-secondary));
+            border-radius: 10px 10px 2px 2px;
+        }
+
+        .hero-pen::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 40px solid var(--contributor-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-pen {
+                display: none;
+            }
+        }
+
+        .contributor-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--contributor-dark);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--contributor-primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--contributor-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .contributor-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .contributor-hero h1 .highlight {
+            color: var(--contributor-primary);
+            position: relative;
+        }
+
+        .contributor-hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--contributor-primary), transparent);
+            border-radius: 2px;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            line-height: 1.7;
+        }
+
+        /* Stats row */
+        .hero-stats {
+            display: flex;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            min-width: 140px;
+            transition: all var(--transition-base);
+        }
+
+        .hero-stat:hover {
+            border-color: var(--contributor-primary);
+            box-shadow: 0 0 25px var(--contributor-glow);
+            transform: translateY(-2px);
+        }
+
+        .hero-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--contributor-primary);
+            margin-bottom: 2px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero line */
+        .hero-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--contributor-primary) 50%, transparent 100%);
+        }
+
+        /* ============================================
+           WHY CONTRIBUTE SECTION
+           ============================================ */
+        .benefits-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--contributor-primary), var(--contributor-secondary));
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+
+        .benefit-card:hover {
+            border-color: var(--contributor-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--contributor-dark);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: var(--radius-md);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .benefit-card:hover .benefit-icon {
+            background: var(--contributor-primary);
+            box-shadow: 0 0 30px var(--contributor-glow);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .benefit-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ============================================
+           WHAT WE'RE LOOKING FOR SECTION
+           ============================================ */
+        .topics-section {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topics-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 80% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .topics-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .topics-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            transition: all var(--transition-base);
+        }
+
+        .topic-card:hover {
+            border-color: var(--contributor-primary);
+            transform: translateX(4px);
+        }
+
+        .topic-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--contributor-dark);
+            border-radius: var(--radius-md);
+            font-size: 1.25rem;
+        }
+
+        .topic-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .topic-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ============================================
+           EDITORIAL PROCESS SECTION
+           ============================================ */
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .process-timeline {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .process-timeline::before {
+                content: '';
+                position: absolute;
+                top: 40px;
+                left: 80px;
+                right: 80px;
+                height: 2px;
+                background: linear-gradient(90deg, var(--contributor-primary), var(--contributor-secondary), var(--contributor-primary));
+                opacity: 0.3;
+            }
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 2px solid var(--contributor-primary);
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--contributor-primary);
+            position: relative;
+            z-index: 2;
+            transition: all var(--transition-base);
+        }
+
+        .process-step:hover .process-number {
+            background: var(--contributor-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 40px var(--contributor-glow);
+        }
+
+        .process-step h4 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           BENEFITS LIST SECTION
+           ============================================ */
+        .perks-section {
+            background: var(--bg-secondary);
+        }
+
+        .perks-list {
+            display: grid;
+            gap: var(--space-lg);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .perk-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .perk-item:hover {
+            border-color: var(--contributor-primary);
+            transform: translateX(8px);
+        }
+
+        .perk-icon {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--contributor-primary), var(--contributor-secondary));
+            border-radius: 50%;
+            font-size: 1.25rem;
+        }
+
+        .perk-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .perk-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ============================================
+           GET STARTED CTA SECTION
+           ============================================ */
+        .cta-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--contributor-primary), var(--contributor-secondary));
+        }
+
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, var(--contributor-glow) 0%, transparent 70%);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .cta-steps {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-step {
+            text-align: center;
+        }
+
+        .cta-step-number {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--contributor-dark);
+            border: 1px solid var(--contributor-primary);
+            border-radius: 50%;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--contributor-primary);
+        }
+
+        .cta-step-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cta-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-card > p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btn {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-2xl);
+            background: linear-gradient(135deg, var(--contributor-primary), var(--contributor-secondary));
+            color: var(--bg-primary);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--contributor-glow);
+        }
+
+        .cta-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform var(--transition-base);
+        }
+
+        .cta-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* ============================================
+           FAQ SECTION
+           ============================================ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-color-hover);
+        }
+
+        .faq-item.active {
+            border-color: var(--contributor-primary);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            color: var(--contributor-primary);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            transition: all var(--transition-base);
+        }
+
+        .faq-icon svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--text-secondary);
+            transition: transform var(--transition-base);
+        }
+
+        .faq-item.active .faq-icon {
+            background: var(--contributor-primary);
+        }
+
+        .faq-item.active .faq-icon svg {
+            stroke: var(--bg-primary);
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-slow);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-content {
+            padding: 0 var(--space-lg) var(--space-lg);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           UTILITIES
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animations */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Print styles */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C50 10, 50 50, 50 50 L10 50 C10 50, 10 30, 30 15 C40 8, 50 10, 50 10" fill="#FFC53E"/>
+                        <path d="M50 10 C50 10, 60 8, 70 15 C90 30, 90 50, 90 50 L50 50 L50 10" fill="#00916E"/>
+                        <path d="M10 50 L50 50 L50 90 C30 90, 10 70, 10 50" fill="#f5f5f0"/>
+                        <path d="M50 50 L90 50 C90 70, 70 90, 50 90 L50 50" fill="#1a1a1a"/>
+                    </svg>
+                </div>
+                Ampli
+            </a>
+
+            <nav class="nav-desktop">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/berlin/" class="nav-link">Berlin</a>
+                <a href="/vibe-ai/" class="nav-link">Vibe AI</a>
+                <a href="/guests/" class="nav-link">Guests</a>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile">
+        <a href="/">Home</a>
+        <a href="/berlin/">Ampli Berlin</a>
+        <a href="/vibe-ai/">Ampli Vibe AI</a>
+        <a href="/guests/">Guests</a>
+        <a href="/partners/">Partners</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contributor-hero">
+        <div class="contributor-grid"></div>
+        <div class="hero-pen"></div>
+
+        <div class="container">
+            <div class="contributor-hero-content">
+                <div class="hero-badge reveal">
+                    <span class="pulse"></span>
+                    <span>Become a Contributor</span>
+                </div>
+
+                <h1 class="reveal reveal-delay-1">
+                    Share Your <span class="highlight">Voice</span> with Berlin's Tech Community
+                </h1>
+
+                <p class="hero-description reveal reveal-delay-2">
+                    Ampli connects the vibrant tech community with the latest industry news, insights, and opportunities in Berlin and beyond. By sharing your knowledge and experiences, you empower tech professionals to propel their careers forward.
+                </p>
+
+                <div class="hero-stats reveal reveal-delay-3">
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">2.5K+</div>
+                        <div class="hero-stat-label">Subscribers</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">Weekly</div>
+                        <div class="hero-stat-label">Frequency</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-value">5K+</div>
+                        <div class="hero-stat-label">Monthly Readers</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta reveal reveal-delay-3" style="margin-top: var(--space-xl);">
+                    <a href="https://ampli.substack.com/t/guest" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="border-color: var(--contributor-primary); color: var(--contributor-primary);">
+                        See Guest Articles
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; margin-left: 8px;">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-line"></div>
+    </section>
+
+    <!-- Why Contribute Section -->
+    <section class="section" id="why-contribute">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Why Contribute?</span>
+                <h2>Make a Meaningful Impact</h2>
+                <p>Contributing to Ampli isn't just about visibility—it's about inspiring and educating the engineering community.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">💡</div>
+                    <h3>Community Impact</h3>
+                    <p>Your insights can guide and inspire engineers and tech professionals at various stages of their careers.</p>
+                </div>
+
+                <div class="benefit-card reveal reveal-delay-1">
+                    <div class="benefit-icon">📢</div>
+                    <h3>Visibility & Reach</h3>
+                    <p>Reach over 5,000 monthly readers eager for tech insights, stories, and practical knowledge.</p>
+                </div>
+
+                <div class="benefit-card reveal reveal-delay-2">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Thought Leadership</h3>
+                    <p>Establish yourself as a thought leader within the tech and engineering community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We're Looking For Section -->
+    <section class="section topics-section" id="topics">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Content We Love</span>
+                <h2>What We're Looking For</h2>
+                <p>We're on the lookout for compelling stories, insights, and advice that benefit our engineering community. <a href="https://ampli.substack.com/t/guest" target="_blank" rel="noopener noreferrer" style="color: var(--contributor-primary); text-decoration: underline;">See examples from past contributors →</a></p>
+            </div>
+
+            <div class="topics-grid">
+                <div class="topic-card reveal">
+                    <div class="topic-icon">🔧</div>
+                    <div>
+                        <h4>Technology Trends</h4>
+                        <p>Cutting-edge innovations, emerging tools, and industry shifts</p>
+                    </div>
+                </div>
+
+                <div class="topic-card reveal reveal-delay-1">
+                    <div class="topic-icon">👨‍💻</div>
+                    <div>
+                        <h4>Career Development</h4>
+                        <p>Career paths, growth strategies, and professional advice for engineers</p>
+                    </div>
+                </div>
+
+                <div class="topic-card reveal reveal-delay-2">
+                    <div class="topic-icon">📖</div>
+                    <div>
+                        <h4>Lessons Learned</h4>
+                        <p>Real stories from engineering projects, leadership experiences, and failures turned into wins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Editorial Process Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">How It Works</span>
+                <h2>Editorial Process</h2>
+                <p>From idea to publication, we're with you every step of the way.</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step reveal">
+                    <div class="process-number">1</div>
+                    <h4>Submit</h4>
+                    <p>Pitch your idea with an outline emphasizing its impact on the engineering community.</p>
+                </div>
+
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="process-number">2</div>
+                    <h4>Collaborate</h4>
+                    <p>Our team works with you to refine and enhance your message for maximum impact.</p>
+                </div>
+
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="process-number">3</div>
+                    <h4>Publish</h4>
+                    <p>Share your knowledge as we feature your article in our next newsletter issue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section perks-section" id="benefits">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">What You Get</span>
+                <h2>Benefits for Contributors</h2>
+                <p>Beyond the satisfaction of sharing knowledge, here's what you'll receive.</p>
+            </div>
+
+            <div class="perks-list">
+                <div class="perk-item reveal">
+                    <div class="perk-icon">💬</div>
+                    <div>
+                        <h4>Direct Community Engagement</h4>
+                        <p>Your article becomes a catalyst for discussions, feedback, and meaningful connections.</p>
+                    </div>
+                </div>
+
+                <div class="perk-item reveal reveal-delay-1">
+                    <div class="perk-icon">📣</div>
+                    <div>
+                        <h4>Cross-Platform Promotion</h4>
+                        <p>Amplified visibility through social shares, featuring your expertise across all our platforms.</p>
+                    </div>
+                </div>
+
+                <div class="perk-item reveal reveal-delay-2">
+                    <div class="perk-icon">🌱</div>
+                    <div>
+                        <h4>Contributing to Growth</h4>
+                        <p>Play an active role in the professional development of engineers and tech enthusiasts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Started CTA Section -->
+    <section class="section" id="get-started">
+        <div class="container">
+            <div class="cta-card reveal">
+                <div class="cta-steps">
+                    <div class="cta-step">
+                        <div class="cta-step-number">1</div>
+                        <div class="cta-step-text">Connect</div>
+                    </div>
+                    <div class="cta-step">
+                        <div class="cta-step-number">2</div>
+                        <div class="cta-step-text">Collaborate</div>
+                    </div>
+                    <div class="cta-step">
+                        <div class="cta-step-number">3</div>
+                        <div class="cta-step-text">Inspire</div>
+                    </div>
+                </div>
+
+                <h3>Ready to Share Your Insights?</h3>
+                <p>Email us with your article idea and let's create something impactful together.</p>
+
+                <a href="https://attiamo.notion.site/2ed778eee179816abcd8ce8d41bbe065?pvs=105" target="_blank" rel="noopener noreferrer" class="cta-btn">
+                    Submit Your Pitch
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="label">Questions?</span>
+                <h2>Frequently Asked</h2>
+                <p>Everything you need to know about contributing to Ampli.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        How technical can my article be?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We welcome a range of technical depths, from introductory insights accessible to beginners, to deep dives into specific technologies, methodologies, or architectural decisions. The key is clarity—make sure your content is understandable to your target audience.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Can I republish my contribution elsewhere?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes! After your article has been published in Ampli for 30 days, you're free to republish it on your personal blog, Medium, LinkedIn, or any other platform. We just ask for the initial exclusivity window to maximize impact for our readers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Do you accept previously published work?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We prefer original content to give our readers fresh perspectives. However, we're open to discussing republished work, especially if it's been significantly updated or expanded. Reach out and let's talk about it!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-question">
+                        Can I promote my blog or product within my article?
+                        <div class="faq-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            It's fine to promote your work as long as it's relevant to our audience. We encourage authentic mentions of tools, products, or resources you've built or use—as long as the article provides genuine value first. Blatant ads won't fly, but thoughtful mentions absolutely can.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize components
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render footer
+            if (window.Ampli?.renderFooter) {
+                window.Ampli.renderFooter('footer', { basePath: '../' });
+            }
+
+            // Initialize scroll reveal
+            if (window.Ampli?.initScrollReveal) {
+                window.Ampli.initScrollReveal();
+            } else {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }
+        });
+    </script>
+</body>
+</html>
